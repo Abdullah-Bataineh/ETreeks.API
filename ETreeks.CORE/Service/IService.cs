@@ -6,6 +6,7 @@ namespace ETreeks.CORE.Service
 {
     public interface IService<T>
     {
+        /*aaaaaa*/
         List<T> GetAll();
 
         T GetById(int id);
