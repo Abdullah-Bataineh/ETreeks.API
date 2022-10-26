@@ -35,8 +35,10 @@ namespace ETreeks.API
             services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IRepository<Trainer>, TrainerRepository>();
+            services.AddScoped<IRepository<About>, AboutRepository>();
             services.AddScoped<IService<Category>, CategoryService>();
             services.AddScoped<IService<Trainer>, TrainerService>();
+            services.AddScoped<IService<About>, AboutService>();
 
             services.AddControllers();
         }
