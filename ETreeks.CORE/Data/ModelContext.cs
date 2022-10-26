@@ -109,7 +109,7 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.CategoryName)
+                entity.Property(e => e.CATEGORY_NAME)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("CATEGORY_NAME");
