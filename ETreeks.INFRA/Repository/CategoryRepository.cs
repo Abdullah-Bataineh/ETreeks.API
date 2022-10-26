@@ -17,6 +17,7 @@ namespace ETreeks.INFRA.Repository
         {
             _dbContext = dbContext;
         }
+        /*Abdulla2000*/
         //sadfsfdg;flsdm
         public int CreateCategory(Category category)
         {
