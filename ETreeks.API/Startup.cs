@@ -33,7 +33,7 @@ namespace ETreeks.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDbContext, DbContext>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IRepository, CategoryRepository>();
             services.AddScoped<IService<Category>, CategoryService>();
 
             services.AddControllers();
