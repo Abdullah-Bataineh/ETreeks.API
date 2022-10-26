@@ -9,9 +9,9 @@ namespace ETreeks.INFRA.Service
 {
     public class CategoryService : IService<Category>
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IRepository<Category> _categoryRepository;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(IRepository<Category> categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
@@ -19,7 +19,7 @@ namespace ETreeks.INFRA.Service
         public bool Create(Category category)
         {
             int result;
-            result = _categoryRepository.CreateCategory(category);
+            result = _categoryRepository.Create(category);
             if (result == 1)
                 return true;
             else
@@ -29,7 +29,7 @@ namespace ETreeks.INFRA.Service
         public bool Delete(int id)
         {
             int result;
-            result = _categoryRepository.DeleteCategory(id);
+            result = _categoryRepository.Delete(id);
             if (result == 1)
                 return true;
             else
@@ -38,18 +38,18 @@ namespace ETreeks.INFRA.Service
 
         public List<Category> GetAll()
         {
-           return _categoryRepository.GetAllCategories();
+           return _categoryRepository.GetAll();
         }
 
         public Category GetById(int id)
         {
-           return _categoryRepository.GetCategoryById(id);
+           return _categoryRepository.GetById(id);
         }
 
         public bool Update(Category category)
         {
             int result;
-            result = _categoryRepository.UpdateCategory(category);
+            result = _categoryRepository.Update(category);
             if (result == 1)
                 return true;
             else
