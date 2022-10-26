@@ -32,10 +32,13 @@ namespace ETreeks.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDbContext, DbContext>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+             services.AddScoped<IDbContext, DbContext>();
+            services.AddScoped<IRepository<Category>,CategoryRepository>();
+            services.AddScoped<IRepository<ContactInfo>,ContactInfoRepository>();
+            services.AddScoped<IRepository<User>,UserRepository>();
             services.AddScoped<IService<Category>, CategoryService>();
-
+            services.AddScoped<IService<ContactInfo>, ContactInfoService>();
+            services.AddScoped<IService<User>, UserService>();
             services.AddControllers();
         }
 
