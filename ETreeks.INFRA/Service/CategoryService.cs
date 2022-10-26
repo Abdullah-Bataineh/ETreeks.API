@@ -9,9 +9,9 @@ namespace ETreeks.INFRA.Service
 {
     public class CategoryService : IService<Category>
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IRepository _categoryRepository;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(IRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
