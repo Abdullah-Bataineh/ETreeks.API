@@ -37,11 +37,11 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IRepository<Trainer>, TrainerRepository>();
             services.AddScoped<IRepository<About>, AboutRepository>();
-            services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<ContactInfo>, ContactInfoRepository>();
             services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IRepository<Login>, LoginRepository>();
             services.AddScoped<IRepository<ContactU>, ContactUsRepository>();
+            services.AddScoped<IRepository<Course>, CourseRepository>();
 
 
             services.AddScoped<IService<Category>, CategoryService>();
@@ -51,6 +51,7 @@ namespace ETreeks.API
             services.AddScoped<IService<About>, AboutService>();
             services.AddScoped<IService<Login>, LoginService>();
             services.AddScoped<IService<ContactU>, ContactUsService>();
+            services.AddScoped<IService<Course>, CourseService>();
             services.AddControllers();
         }
 
