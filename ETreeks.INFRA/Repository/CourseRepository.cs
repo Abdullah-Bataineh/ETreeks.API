@@ -63,7 +63,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("ID", course.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("NAME", course.CourseName, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("CAT_ID", course.CatId, dbType: DbType.String, direction: ParameterDirection.Input);
-
+            p.Add("DESCRIPTION", course.Description, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("COURSE_PACKAGE.UPDATECOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
