@@ -44,7 +44,7 @@ namespace ETreeks.INFRA.Repository
             return result;
         }
 
-        public List<Login> GetAll()
+        List<Login> IRepository<Login>.GetAll()
         {
             IEnumerable<Login> result = _dbContext.Connection.Query<Login>("LOGIN_PACKAGE.GETALLLOGIN", commandType: CommandType.StoredProcedure);
             return result.ToList();

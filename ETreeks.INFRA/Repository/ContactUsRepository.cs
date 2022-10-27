@@ -19,7 +19,7 @@ namespace ETreeks.INFRA.Repository
             _dbContext = dbContext;
         }
 
-        public List<ContactU> GetAll()
+        List<ContactU> IRepository<ContactU>.GetAll()
         {
             IEnumerable<ContactU> result = _dbContext.Connection.Query<ContactU>("CONTACTUS_PACKAGE.GETALLCONTACTUS", commandType: CommandType.StoredProcedure);
             return result.ToList();
