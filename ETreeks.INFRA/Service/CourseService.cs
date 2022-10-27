@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    internal class CourseService : IService<Course>
+    public class CourseService : IService<Course>
     {
         private readonly IRepository<Course> _courseRepository;
         public CourseService(IRepository<Course> courseRepository)
