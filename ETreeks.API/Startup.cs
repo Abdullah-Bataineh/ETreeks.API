@@ -6,6 +6,7 @@ using ETreeks.INFRA.Common;
 using ETreeks.INFRA.Repository;
 using ETreeks.INFRA.Service;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -36,8 +37,14 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IRepository<Trainer>, TrainerRepository>();
             services.AddScoped<IRepository<About>, AboutRepository>();
+            services.AddScoped<IRepository<Course>, CourseRepository>();
+            services.AddScoped<IRepository<ContactInfo>, ContactInfoRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IService<Category>, CategoryService>();
             services.AddScoped<IService<Trainer>, TrainerService>();
+            services.AddScoped<IService<ContactInfo>, ContactInfoService>();
+           
+            services.AddScoped<IService<User>, UserService>();
             services.AddScoped<IService<About>, AboutService>();
             services.AddScoped<IRepository<Login>, LoginRepository>();
             services.AddScoped<IService<Login>, LoginService>();
