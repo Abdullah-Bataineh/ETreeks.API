@@ -40,15 +40,16 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<ContactInfo>, ContactInfoRepository>();
             services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<IRepository<Login>, LoginRepository>();
+            services.AddScoped<IRepository<ContactU>, ContactUsRepository>();
+
+
             services.AddScoped<IService<Category>, CategoryService>();
             services.AddScoped<IService<Trainer>, TrainerService>();
             services.AddScoped<IService<ContactInfo>, ContactInfoService>();
-           
             services.AddScoped<IService<User>, UserService>();
             services.AddScoped<IService<About>, AboutService>();
-            services.AddScoped<IRepository<Login>, LoginRepository>();
             services.AddScoped<IService<Login>, LoginService>();
-            services.AddScoped<IRepository<ContactU>, ContactUsRepository>();
             services.AddScoped<IService<ContactU>, ContactUsService>();
             services.AddControllers();
         }
