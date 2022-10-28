@@ -45,7 +45,12 @@ namespace ETreeks.API
             services.AddScoped<IRepository<TrainerCourse>, TrainerCourseRepository>();
             services.AddScoped<IRepository<Role>, RoleRepository>();
 
+            services.AddScoped<IRepository<AvailableTime>, AvailableTimeRepsitory>();
+            services.AddScoped<IAvailableTimeRepository, AvailableTimeRepsitory>();
 
+
+
+           
             services.AddScoped<IService<Category>, CategoryService>();
             services.AddScoped<IService<Trainer>, TrainerService>();
             services.AddScoped<IService<ContactInfo>, ContactInfoService>();
@@ -56,6 +61,10 @@ namespace ETreeks.API
             services.AddScoped<IService<Course>, CourseService>();
             services.AddScoped<IService<TrainerCourse>, TrainerCourseService>();
             services.AddScoped<IService<Role>, RoleService>();
+
+            services.AddScoped<IService<AvailableTime>, AvailableTimeService>();
+            services.AddScoped<IAvailableTimeService, AvailableTimeService>();
+
             services.AddControllers();
         }
 
