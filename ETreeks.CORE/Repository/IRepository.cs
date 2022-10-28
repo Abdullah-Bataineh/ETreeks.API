@@ -13,6 +13,7 @@ namespace ETreeks.CORE.Repository
         int Update(T t);
         int Delete(int id);
 
+      
 
     }
 }
