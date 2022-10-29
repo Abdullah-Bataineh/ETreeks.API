@@ -13,7 +13,7 @@ namespace ETreeks.CORE.Data
         }
 
         public decimal Id { get; set; }
-        public string CourseName { get; set; }
+        public string COURSE_NAME { get; set; }
         public string Description { get; set; }
         public string VerifyCode { get; set; }
         public decimal? CatId { get; set; }

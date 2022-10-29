@@ -1,25 +1,25 @@
 ﻿using ETreeks.CORE.Data;
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
+using ETreeks.INFRA.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class CategoryService : IService<Category>
+    public class LoginService : IService<Login>
     {
-        private readonly IRepository<Category> _categoryRepository;
-
-        public CategoryService(IRepository<Category> categoryRepository)
+        private readonly IRepository<Login> _loginRepository;
+        public LoginService(IRepository<Login> loginRepository)
         {
-            _categoryRepository = categoryRepository;
+            _loginRepository = loginRepository;
         }
 
-        public bool Create(Category category)
+        public bool Create(Login login)
         {
             int result;
-            result = _categoryRepository.Create(category);
+            result = _loginRepository.Create(login);
             if (result == 1)
                 return true;
             else
@@ -29,27 +29,27 @@ namespace ETreeks.INFRA.Service
         public bool Delete(int id)
         {
             int result;
-            result = _categoryRepository.Delete(id);
+            result = _loginRepository.Delete(id);
             if (result == 1)
                 return true;
             else
                 return false;
         }
 
-        public List<Category> GetAll()
+        public List<Login> GetAll()
         {
-           return _categoryRepository.GetAll();
+            return _loginRepository.GetAll();
         }
 
-        public Category GetById(int id)
+        public Login GetById(int id)
         {
-           return _categoryRepository.GetById(id);
+            return _loginRepository.GetById(id);
         }
 
-        public bool Update(Category category)
+        public bool Update(Login login)
         {
             int result;
-            result = _categoryRepository.Update(category);
+            result = _loginRepository.Update(login);
             if (result == 1)
                 return true;
             else

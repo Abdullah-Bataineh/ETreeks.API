@@ -6,6 +6,7 @@ using ETreeks.INFRA.Common;
 using ETreeks.INFRA.Repository;
 using ETreeks.INFRA.Service;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +34,36 @@ namespace ETreeks.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDbContext, DbContext>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<IRepository<Trainer>, TrainerRepository>();
+            services.AddScoped<IRepository<About>, AboutRepository>();
+            services.AddScoped<IRepository<ContactInfo>, ContactInfoRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<IRepository<Login>, LoginRepository>();
+            services.AddScoped<IRepository<ContactU>, ContactUsRepository>();
+            services.AddScoped<IRepository<Course>, CourseRepository>();
+            services.AddScoped<IRepository<TrainerCourse>, TrainerCourseRepository>();
+            services.AddScoped<IRepository<Role>, RoleRepository>();
+
+            services.AddScoped<IRepository<AvailableTime>, AvailableTimeRepsitory>();
+            services.AddScoped<IAvailableTimeRepository, AvailableTimeRepsitory>();
+
+
+
+           
             services.AddScoped<IService<Category>, CategoryService>();
+            services.AddScoped<IService<Trainer>, TrainerService>();
+            services.AddScoped<IService<ContactInfo>, ContactInfoService>();
+            services.AddScoped<IService<User>, UserService>();
+            services.AddScoped<IService<About>, AboutService>();
+            services.AddScoped<IService<Login>, LoginService>();
+            services.AddScoped<IService<ContactU>, ContactUsService>();
+            services.AddScoped<IService<Course>, CourseService>();
+            services.AddScoped<IService<TrainerCourse>, TrainerCourseService>();
+            services.AddScoped<IService<Role>, RoleService>();
+
+            services.AddScoped<IService<AvailableTime>, AvailableTimeService>();
+            services.AddScoped<IAvailableTimeService, AvailableTimeService>();
 
             services.AddControllers();
         }

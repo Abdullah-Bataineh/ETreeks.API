@@ -7,19 +7,18 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class CategoryService : IService<Category>
+    public class CourseService : IService<Course>
     {
-        private readonly IRepository<Category> _categoryRepository;
-
-        public CategoryService(IRepository<Category> categoryRepository)
+        private readonly IRepository<Course> _courseRepository;
+        public CourseService(IRepository<Course> courseRepository)
         {
-            _categoryRepository = categoryRepository;
+            _courseRepository = courseRepository;
         }
 
-        public bool Create(Category category)
+        public bool Create(Course course)
         {
             int result;
-            result = _categoryRepository.Create(category);
+            result = _courseRepository.Create(course);
             if (result == 1)
                 return true;
             else
@@ -29,27 +28,28 @@ namespace ETreeks.INFRA.Service
         public bool Delete(int id)
         {
             int result;
-            result = _categoryRepository.Delete(id);
+            result = _courseRepository.Delete(id);
             if (result == 1)
                 return true;
             else
                 return false;
         }
 
-        public List<Category> GetAll()
+        public List<Course> GetAll()
         {
-           return _categoryRepository.GetAll();
+            return _courseRepository.GetAll();
         }
 
-        public Category GetById(int id)
+        public Course GetById(int id)
         {
-           return _categoryRepository.GetById(id);
+            return _courseRepository.GetById(id);
         }
 
-        public bool Update(Category category)
+        public bool Update(Course course)
         {
+
             int result;
-            result = _categoryRepository.Update(category);
+            result = _courseRepository.Update(course);
             if (result == 1)
                 return true;
             else
