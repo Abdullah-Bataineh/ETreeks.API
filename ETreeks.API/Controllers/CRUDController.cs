@@ -16,18 +16,18 @@ namespace ETreeks.API.Controllers
             _service = service;
         }
         [HttpPost]
-        public bool CreateCategory(T itrm)
+        public bool Create(T itrm)
         {
           return _service.Create(itrm);
         }
         [HttpPut]        
-        public bool UpdateCategory(T itrm)
+        public bool Update(T itrm)
         {
             return _service.Update(itrm);
         }
         [HttpDelete]
         [Route("Delete/{id}")]
-        public bool DeleteCategory(int id)
+        public bool Delete(int id)
         {
             return _service.Delete(id);
         }
@@ -38,7 +38,7 @@ namespace ETreeks.API.Controllers
         }
         [HttpGet]
         [Route("GetById/{id}")]
-        public T GetCategoryById(int id)
+        public T GetById(int id)
         {
             return _service.GetById(id);
         }
