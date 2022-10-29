@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ETreeks.INFRA.Service
-{
+{//abdullah
     public class TestimonialService : IService<Testimonial>
     {
         private readonly IRepository<Testimonial> _testimonialrepository;
