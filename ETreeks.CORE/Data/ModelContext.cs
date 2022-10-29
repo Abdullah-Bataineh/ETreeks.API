@@ -81,21 +81,21 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.EndDate)
+                entity.Property(e => e.End_Date)
                     .HasColumnType("DATE")
                     .HasColumnName("END_DATE");
 
-                entity.Property(e => e.StartDate)
+                entity.Property(e => e.Start_Date)
                     .HasColumnType("DATE")
                     .HasColumnName("START_DATE");
 
-                entity.Property(e => e.TrainerId)
+                entity.Property(e => e.Trainer_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("TRAINER_ID");
 
                 entity.HasOne(d => d.Trainer)
                     .WithMany(p => p.AvailableTimes)
-                    .HasForeignKey(d => d.TrainerId)
+                    .HasForeignKey(d => d.Trainer_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295778");
             });
@@ -129,12 +129,12 @@ namespace ETreeks.CORE.Data
                     .IsUnicode(false)
                     .HasColumnName("LOCATION");
 
-                entity.Property(e => e.PhoneNumber)
+                entity.Property(e => e.Phone_Number)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("PHONE_NUMBER");
 
-                entity.Property(e => e.WebsiteName)
+                entity.Property(e => e.Website_Name)
                     .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("WEBSITE_NAME");
@@ -174,7 +174,7 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.CatId)
+                entity.Property(e => e.Cat_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("CAT_ID");
 
@@ -188,14 +188,11 @@ namespace ETreeks.CORE.Data
                     .IsUnicode(false)
                     .HasColumnName("DESCRIPTION");
 
-                entity.Property(e => e.VerifyCode)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("VERIFY_CODE");
+               
 
                 entity.HasOne(d => d.Cat)
                     .WithMany(p => p.Courses)
-                    .HasForeignKey(d => d.CatId)
+                    .HasForeignKey(d => d.Cat_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295708");
             });
@@ -247,28 +244,28 @@ namespace ETreeks.CORE.Data
                     .IsUnicode(false)
                     .HasColumnName("PASSWORD");
 
-                entity.Property(e => e.RoleId)
+                entity.Property(e => e.Role_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("ROLE_ID");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.User_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
-                entity.Property(e => e.VerifyCode)
+                entity.Property(e => e.Verify_Code)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("VERIFY_CODE");
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Logins)
-                    .HasForeignKey(d => d.RoleId)
+                    .HasForeignKey(d => d.Role_Id)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00295704");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Logins)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295705");
             });
@@ -282,11 +279,11 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.EndDate)
+                entity.Property(e => e.End_Date)
                     .HasColumnType("DATE")
                     .HasColumnName("END_DATE");
 
-                entity.Property(e => e.StartDate)
+                entity.Property(e => e.Start_Date)
                     .HasColumnType("DATE")
                     .HasColumnName("START_DATE");
 
@@ -294,23 +291,23 @@ namespace ETreeks.CORE.Data
                     .HasColumnType("NUMBER")
                     .HasColumnName("STATUS");
 
-                entity.Property(e => e.TrainerCourseId)
+                entity.Property(e => e.Trainer_Course_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("TRAINER_COURSE_ID");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.User_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
                 entity.HasOne(d => d.TrainerCourse)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.TrainerCourseId)
+                    .HasForeignKey(d => d.Trainer_Course_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295782");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295781");
             });
@@ -343,7 +340,7 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.RoleName)
+                entity.Property(e => e.Role_Name)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("ROLE_NAME");
@@ -367,13 +364,13 @@ namespace ETreeks.CORE.Data
                     .IsUnicode(false)
                     .HasColumnName("TEXT");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.User_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Testimonials)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295771");
             });
@@ -387,7 +384,7 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.CatId)
+                entity.Property(e => e.Cat_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("CAT_ID");
 
@@ -410,19 +407,19 @@ namespace ETreeks.CORE.Data
                     .HasColumnType("NUMBER")
                     .HasColumnName("STATUS");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.User_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
                 entity.HasOne(d => d.Cat)
                     .WithMany(p => p.Trainers)
-                    .HasForeignKey(d => d.CatId)
+                    .HasForeignKey(d => d.Cat_Id)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00295767");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Trainers)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295768");
             });
@@ -436,23 +433,23 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.CourseId)
+                entity.Property(e => e.Course_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("COURSE_ID");
 
-                entity.Property(e => e.TrainerId)
+                entity.Property(e => e.Trainer_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("TRAINER_ID");
 
                 entity.HasOne(d => d.Course)
                     .WithMany(p => p.TrainerCourses)
-                    .HasForeignKey(d => d.CourseId)
+                    .HasForeignKey(d => d.Course_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295774");
 
                 entity.HasOne(d => d.Trainer)
                     .WithMany(p => p.TrainerCourses)
-                    .HasForeignKey(d => d.TrainerId)
+                    .HasForeignKey(d => d.Trainer_Id)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00295775");
             });
@@ -461,7 +458,7 @@ namespace ETreeks.CORE.Data
             {
                 entity.ToTable("USERS");
 
-                entity.HasIndex(e => e.PhoneNumber, "SYS_C00295690")
+                entity.HasIndex(e => e.Phone_Number, "SYS_C00295690")
                     .IsUnique();
 
                 entity.Property(e => e.Id)
@@ -469,11 +466,11 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.BirthDate)
+                entity.Property(e => e.Birth_Date)
                     .HasColumnType("DATE")
                     .HasColumnName("BIRTH_DATE");
 
-                entity.Property(e => e.FirstName)
+                entity.Property(e => e.First_Name)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("FIRST_NAME");
@@ -483,12 +480,12 @@ namespace ETreeks.CORE.Data
                     .IsUnicode(false)
                     .HasColumnName("IMAGE");
 
-                entity.Property(e => e.LastName)
+                entity.Property(e => e.Last_Name)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("LAST_NAME");
 
-                entity.Property(e => e.PhoneNumber)
+                entity.Property(e => e.Phone_Number)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("PHONE_NUMBER");
