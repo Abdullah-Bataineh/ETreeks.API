@@ -16,10 +16,10 @@ namespace ETreeks.CORE.Data
         }
 
         public decimal Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string Phone_Number { get; set; }
+        public DateTime? Birth_Date { get; set; }
         public string Image { get; set; }
 
         public virtual ICollection<Login> Logins { get; set; }

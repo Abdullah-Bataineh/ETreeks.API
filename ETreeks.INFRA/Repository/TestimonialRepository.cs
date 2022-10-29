@@ -24,7 +24,7 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("TEST_TEXT", testimonial.Text, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TEST_STATUS", testimonial.Status, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("USERID", testimonial.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", testimonial.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TESTIMONIAL_PACKAGE.CREATETESTIMONIAL", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
@@ -63,7 +63,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("TESTIMONIALID", testimonial.Text, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TEST_TEXT", testimonial.Text, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TEST_STATUS", testimonial.Status, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("USERID", testimonial.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", testimonial.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TESTIMONIAL_PACKAGE.UPDATETESTIMONIAL", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");

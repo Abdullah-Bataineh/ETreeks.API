@@ -26,8 +26,8 @@ namespace ETreeks.INFRA.Repository
             p.Add("LOCATION", trainer.Location, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("CV", trainer.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("STATUS", trainer.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("USER_ID", trainer.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", trainer.CatId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USER_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CAT_ID", trainer.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINER_PACKAGE.CREATETRAINER", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
@@ -72,8 +72,8 @@ namespace ETreeks.INFRA.Repository
             p.Add("LOCATION", trainer.Location, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("CV", trainer.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("STATUS", trainer.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("USER_ID", trainer.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", trainer.CatId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USER_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CAT_ID", trainer.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATETRAINER", p, commandType: CommandType.StoredProcedure);

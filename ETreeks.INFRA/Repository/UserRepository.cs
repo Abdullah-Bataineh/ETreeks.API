@@ -22,10 +22,10 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("FIRSTNAME", user.FirstName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LASTNAME", user.LastName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("BIRTHDATE", user.BirthDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("PHONENUMBER", user.PhoneNumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("FIRSTNAME", user.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LASTNAME", user.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("BIRTHDATE", user.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("PHONENUMBER", user.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("IMAGEUSER", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.CREATEUSERS", p, commandType: CommandType.StoredProcedure);
@@ -63,10 +63,10 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("USERID", user.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("FIRSTNAME", user.FirstName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LASTNAME", user.LastName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("BIRTHDATE", user.BirthDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("PHONENUMBER", user.PhoneNumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("FIRSTNAME", user.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LASTNAME", user.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("BIRTHDATE", user.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("PHONENUMBER", user.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("IMAGEUSER", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.UPDATEUSERS", p, commandType: CommandType.StoredProcedure);

@@ -13,7 +13,6 @@ namespace ETreeks.API.Controllers
     [ApiController]
     public class CRUDContactInfoController :CRUDController<ContactInfo>
     {
-        private readonly IService<ContactU> _contactinfoService;
         public CRUDContactInfoController(IService<ContactInfo> contactiinfoervice)
         : base(contactiinfoervice)
         {
