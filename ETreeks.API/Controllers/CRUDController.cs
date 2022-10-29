@@ -6,38 +6,41 @@ using System.Collections.Generic;
 
 namespace ETreeks.API.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
     public class CRUDController<T> : Controller
     {
-        private readonly IService<T> _aboutService;
-        public CRUDController(IService<T> aboutService)
+        private readonly IService<T> _service;
+        public CRUDController(IService<T> service)
         {
-            _aboutService = aboutService;
+            _service = service;
         }
         [HttpPost]
         public bool CreateCategory(T itrm)
         {
-          return _aboutService.Create(itrm);
+          return _service.Create(itrm);
         }
         [HttpPut]        
         public bool UpdateCategory(T itrm)
         {
-            return _aboutService.Update(itrm);
+            return _service.Update(itrm);
         }
         [HttpDelete]
         [Route("Delete/{id}")]
         public bool DeleteCategory(int id)
         {
-            return _aboutService.Delete(id);
+            return _service.Delete(id);
         }
         [HttpGet]
-        public List<T> GetAll() { return _aboutService.GetAll(); }
+        public List<T> GetAll()
+        {
+            return _service.GetAll();
+        }
         [HttpGet]
         [Route("GetById/{id}")]
         public T GetCategoryById(int id)
         {
-            return _aboutService.GetById(id);
+            return _service.GetById(id);
         }
     }
 }

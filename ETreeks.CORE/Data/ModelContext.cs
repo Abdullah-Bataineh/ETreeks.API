@@ -178,7 +178,7 @@ namespace ETreeks.CORE.Data
                     .HasColumnType("NUMBER")
                     .HasColumnName("CAT_ID");
 
-                entity.Property(e => e.CourseName)
+                entity.Property(e => e.COURSE_NAME)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("COURSE_NAME");
