@@ -45,7 +45,7 @@ namespace ETreeks.INFRA.Repository
 
         List<About> IRepository<About>.GetAll()
         {
-            IEnumerable<About> result = _dbContext.Connection.Query<About>("ABOUT_PACKAGE.GETALLABOUT", commandType: CommandType.StoredProcedure);
+            IEnumerable<About> result = _dbContext.Connection.Query<About>("ABOUT_PACKAGE.GETABOUT", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -57,9 +57,9 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("ABOUTID", about.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TEXT", about.Text, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TITLE", about.Title, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("IMAGE", about.Image, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("TXT", about.Text, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("TTL", about.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("IMG", about.Image, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("ABOUT_PACKAGE.UPDATEABOUT", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
@@ -68,7 +68,10 @@ namespace ETreeks.INFRA.Repository
 
         public About GetById(int id)
         {
-            throw new NotImplementedException();
+            var p = new DynamicParameters();
+            p.Add("ABOUTID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<About> result = _dbContext.Connection.Query<About>("ABOUT_PACKAGE.GETABOUTBYID", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
         }
     }
 }
