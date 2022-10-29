@@ -22,8 +22,8 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("PHONE", contactInfo.PhoneNumber, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("WEBSITE", contactInfo.WebsiteName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PHONE", contactInfo.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("WEBSITE", contactInfo.Website_Name, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LOCATN", contactInfo.Location, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTINFO_PACKAGE.CREATECONTACTINFO", p, commandType: CommandType.StoredProcedure);
@@ -63,8 +63,8 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("CONTACTINFOID", contactInfo.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("PHONE", contactInfo.PhoneNumber, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("WEBSITE", contactInfo.WebsiteName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PHONE", contactInfo.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("WEBSITE", contactInfo.Website_Name, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("LOCATN", contactInfo.Location, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
 

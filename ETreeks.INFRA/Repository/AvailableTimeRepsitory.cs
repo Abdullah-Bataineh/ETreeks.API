@@ -22,9 +22,9 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("START_D", availableTime.StartDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("END_D", availableTime.EndDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("TR_ID", availableTime.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("START_D", availableTime.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("END_D", availableTime.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("TR_ID", availableTime.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("AVAILABLETIME_PACKAGE.CREATETIME", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
@@ -57,9 +57,9 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("TIMEID", availableTime.Id, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("START_D", availableTime.StartDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("END_D", availableTime.EndDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("TR_ID", availableTime.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("START_D", availableTime.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("END_D", availableTime.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("TR_ID", availableTime.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("AVAILABLETIME_PACKAGE.CREATETIME", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
