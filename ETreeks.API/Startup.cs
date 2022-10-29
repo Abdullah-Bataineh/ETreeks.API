@@ -47,6 +47,8 @@ namespace ETreeks.API
 
             services.AddScoped<IRepository<AvailableTime>, AvailableTimeRepsitory>();
             services.AddScoped<IAvailableTimeRepository, AvailableTimeRepsitory>();
+            services.AddScoped<IRepository<Testimonial>,TestimonialRepository>();
+            services.AddScoped<IRepository<HomePage>, HomeRepository>();
 
 
 
@@ -64,6 +66,8 @@ namespace ETreeks.API
 
             services.AddScoped<IService<AvailableTime>, AvailableTimeService>();
             services.AddScoped<IAvailableTimeService, AvailableTimeService>();
+            services.AddScoped<IService<Testimonial>, TestimonialService>();
+            services.AddScoped<IService<HomePage>, HomeService>();
 
             services.AddControllers();
         }
