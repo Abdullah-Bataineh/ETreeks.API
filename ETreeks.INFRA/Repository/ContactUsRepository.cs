@@ -28,7 +28,7 @@ namespace ETreeks.INFRA.Repository
         public ContactU GetById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<ContactU> result = _dbContext.Connection.Query<ContactU>("CONTACTUS_PACKAGE.GETCONTACTUSBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -40,9 +40,9 @@ namespace ETreeks.INFRA.Repository
             p.Add("NAME", contactU.Name, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("EMAIL", contactU.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("MESSAGE", contactU.Message, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTUS_PACKAGE.CREATECONTACTUS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -50,13 +50,13 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("ID", contactU.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("NAME", contactU.Name, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("EMAIL", contactU.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("MESSAGE", contactU.Message, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("C_ID", contactU.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("cNAME", contactU.Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("cEMAIL", contactU.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("cMESSAGE", contactU.Message, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTUS_PACKAGE.UPDATECONTACTUS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -64,10 +64,10 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTUS_PACKAGE.DELETECONTACTUS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
     }
