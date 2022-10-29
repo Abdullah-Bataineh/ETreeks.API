@@ -13,8 +13,8 @@ namespace ETreeks.CORE.Data
         }
 
         public decimal Id { get; set; }
-        public decimal? CourseId { get; set; }
-        public decimal? TrainerId { get; set; }
+        public decimal? Course_Id { get; set; }
+        public decimal? Trainer_Id { get; set; }
 
         public virtual Course Course { get; set; }
         public virtual Trainer Trainer { get; set; }

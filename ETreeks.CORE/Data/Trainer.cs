@@ -18,8 +18,8 @@ namespace ETreeks.CORE.Data
         public string Location { get; set; }
         public decimal? Status { get; set; }
         public string Cv { get; set; }
-        public decimal? CatId { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? Cat_Id { get; set; }
+        public decimal? User_Id { get; set; }
 
         public virtual Category Cat { get; set; }
         public virtual User User { get; set; }

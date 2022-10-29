@@ -22,7 +22,7 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("NAME", role.RoleName, dbType: DbType.String, direction: ParameterDirection.Input);         
+            p.Add("NAME", role.Role_Name, dbType: DbType.String, direction: ParameterDirection.Input);         
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("ROLE_PACKAGE.CREATEROLE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
@@ -59,7 +59,7 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("ROLEID", role.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("NAME", role.RoleName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("NAME", role.Role_Name, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES" , dbType:DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("ROLE_PACKAGE.UPDATEROLE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");

@@ -24,8 +24,8 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("COURSEID", trainerCourse.CourseId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TRAINERID", trainerCourse.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("COURSEID", trainerCourse.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TRAINERID", trainerCourse.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINERCOURSE_PACKAGE.CREATETRAINERCOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -62,8 +62,8 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("TRAINERCOURSEID", trainerCourse.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("COURSEID", trainerCourse.CourseId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TRAINERID", trainerCourse.TrainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("COURSEID", trainerCourse.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TRAINERID", trainerCourse.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINERCOURSE_PACKAGE.UPDATETRAINERCOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");

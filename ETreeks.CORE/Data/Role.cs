@@ -13,7 +13,7 @@ namespace ETreeks.CORE.Data
         }
 
         public decimal Id { get; set; }
-        public string RoleName { get; set; }
+        public string Role_Name { get; set; }
 
         public virtual ICollection<Login> Logins { get; set; }
     }

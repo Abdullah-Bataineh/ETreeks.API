@@ -10,7 +10,7 @@ namespace ETreeks.CORE.Data
         public decimal Id { get; set; }
         public string Text { get; set; }
         public decimal? Status { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? User_Id { get; set; }
 
         public virtual User User { get; set; }
     }
