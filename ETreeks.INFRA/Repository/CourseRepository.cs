@@ -35,7 +35,7 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("COURSE_PACKAGE.DELETECOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -51,7 +51,7 @@ namespace ETreeks.INFRA.Repository
         public Course GetById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Course> result = _dbContext.Connection.Query<Course>("COURSE_PACKAGE.GETCOURSEBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -60,13 +60,13 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("ID", course.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("C_ID", course.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("NAME", course.COURSE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", course.Cat_Id, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("DESCRIPTION", course.Description, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("CATEGORY_ID", course.Cat_Id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DESCR", course.Description, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("COURSE_PACKAGE.UPDATECOURSE", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
     }
