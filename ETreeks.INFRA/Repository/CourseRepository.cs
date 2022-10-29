@@ -24,7 +24,7 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("NAME", course.COURSE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("DESCRIPTION",course.Description, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", course.CatId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CAT_ID", course.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("COURSE_PACKAGE.CREATECOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -62,7 +62,7 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("ID", course.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("NAME", course.COURSE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", course.CatId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("CAT_ID", course.Cat_Id, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("DESCRIPTION", course.Description, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("COURSE_PACKAGE.UPDATECOURSE", p, commandType: CommandType.StoredProcedure);

@@ -8,9 +8,9 @@ namespace ETreeks.CORE.Data
     public partial class AvailableTime
     {
         public decimal Id { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public decimal? TrainerId { get; set; }
+        public DateTime? Start_Date { get; set; }
+        public DateTime? End_Date { get; set; }
+        public decimal? Trainer_Id { get; set; }
 
         public virtual Trainer Trainer { get; set; }
     }

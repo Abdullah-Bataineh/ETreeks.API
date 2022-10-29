@@ -24,9 +24,9 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("EMAILLOGIN", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("PASSWORDLOGIN", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CODE", login.VerifyCode, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ROLEID", login.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("USERID", login.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CODE", login.Verify_Code, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("ROLEID", login.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", login.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -65,9 +65,9 @@ namespace ETreeks.INFRA.Repository
             p.Add("LOGINID", login.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("EMAILLOGIN", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("PASSWORDLOGIN", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CODE", login.VerifyCode, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ROLEID", login.RoleId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("USERID", login.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CODE", login.Verify_Code, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("ROLEID", login.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", login.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.UPDATELOGIN", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");

@@ -8,11 +8,11 @@ namespace ETreeks.CORE.Data
     public partial class Reservation
     {
         public decimal Id { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public DateTime? Start_Date { get; set; }
+        public DateTime? End_Date { get; set; }
         public decimal? Status { get; set; }
-        public decimal? UserId { get; set; }
-        public decimal? TrainerCourseId { get; set; }
+        public decimal? User_Id { get; set; }
+        public decimal? Trainer_Course_Id { get; set; }
 
         public virtual TrainerCourse TrainerCourse { get; set; }
         public virtual User User { get; set; }
