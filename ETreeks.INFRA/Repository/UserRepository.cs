@@ -27,9 +27,9 @@ namespace ETreeks.INFRA.Repository
             p.Add("BIRTHDATE", user.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("PHONENUMBER", user.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("IMAGEUSER", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.CREATEUSERS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -38,9 +38,9 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("USERID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.DELETEUSERS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -68,9 +68,9 @@ namespace ETreeks.INFRA.Repository
             p.Add("BIRTHDATE", user.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("PHONENUMBER", user.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("IMAGEUSER", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.UPDATEUSERS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
     }

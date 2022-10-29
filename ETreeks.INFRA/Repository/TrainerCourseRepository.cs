@@ -26,9 +26,9 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("COURSEID", trainerCourse.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TRAINERID", trainerCourse.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINERCOURSE_PACKAGE.CREATETRAINERCOURSE", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -37,9 +37,9 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("TRAINERCOURSEID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINERCOURSE_PACKAGE.DELETETRAINERCOURSE", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -64,9 +64,9 @@ namespace ETreeks.INFRA.Repository
             p.Add("TRAINERCOURSEID", trainerCourse.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("COURSEID", trainerCourse.Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("TRAINERID", trainerCourse.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINERCOURSE_PACKAGE.UPDATETRAINERCOURSE", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
     }
