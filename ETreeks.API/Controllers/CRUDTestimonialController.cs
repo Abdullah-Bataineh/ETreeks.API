@@ -8,7 +8,7 @@ namespace ETreeks.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class CRUDTestimonialController : CRUDController<Testimonial>
-    {
+    {   //abdulla
         public CRUDTestimonialController(IService<Testimonial> testimonialservice) : base(testimonialservice)
         {
         }
