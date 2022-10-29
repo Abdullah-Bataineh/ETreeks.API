@@ -27,7 +27,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("LOCATN", contactInfo.Location, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTINFO_PACKAGE.CREATECONTACTINFO", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -40,7 +40,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("CONTACTINFOID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CONTACTINFO_PACKAGE.DELETECONTACTINFO", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
@@ -53,7 +53,7 @@ namespace ETreeks.INFRA.Repository
         public ContactInfo GetById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CONTACTINFOID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<ContactInfo> result = _dbContext.Connection.Query<ContactInfo>("CONTACTINFO_PACKAGE.GETCONTACTINFOBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -70,7 +70,7 @@ namespace ETreeks.INFRA.Repository
 
            
             _dbContext.Connection.Execute("CONTACTINFO_PACKAGE.UPDATECONTACTINFO", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("res");
+            result = p.Get<int>("RES");
             return result;
         }
 
