@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using ETreeks.CORE.Common;
 using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,17 @@ namespace ETreeks.INFRA.Repository
             _dbContext.Connection.Execute("RESERVATION_PACKAGE.UPDATERESERVATION", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
             return result;
+        }
+        public List<search> Search(search search)
+        {
+            var p = new DynamicParameters();
+            p.Add("TR_ID", search.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("COURSENAME", search.COURSE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("START_DATE", search.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("END_DATE", search.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = _dbContext.Connection.Query<search>("RESERVATION_PACKAGE.Search", p, commandType: CommandType.StoredProcedure);   
+            return result.ToList();
+
         }
     }
 }
