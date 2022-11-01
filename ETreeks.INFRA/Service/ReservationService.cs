@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
 using System;
@@ -7,12 +8,15 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class ReservationService:IService<Reservation>
+    public class ReservationService : IService<Reservation> , IReservationService
     {
+        private readonly IReservationRepository _reservationRepository1;
+        
         private readonly IRepository<Reservation> _reservationRepository;
-        public ReservationService(IRepository<Reservation> reservationRepository)
+        public ReservationService(IRepository<Reservation> reservationRepository, IReservationRepository reservationRepository1)
         {
             _reservationRepository = reservationRepository;
+            _reservationRepository1 = reservationRepository1;
         }
 
         public bool Create(Reservation reservation)
@@ -55,6 +59,10 @@ namespace ETreeks.INFRA.Service
                 return true;
             else
                 return false;
+        }
+        public List<search> Search(search search)
+        {
+            return _reservationRepository1.Search(search);
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Text;
 
 namespace ETreeks.INFRA.Repository
 {
-    public class ReservationRepository : IRepository<Reservation>
+    public class ReservationRepository : IRepository<Reservation> ,IReservationRepository
     {
         private readonly IDbContext _dbContext;
         public ReservationRepository(IDbContext dbContext)
@@ -80,9 +80,9 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("TR_ID", search.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("COURSENAME", search.COURSE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("START_DATE", search.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("END_DATE", search.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            var result = _dbContext.Connection.Query<search>("RESERVATION_PACKAGE.Search", p, commandType: CommandType.StoredProcedure);   
+            p.Add("STARTDATE", search.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("ENDDATE", search.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = _dbContext.Connection.Query<search>("RESERVATION_PACKAGE.SEARCH", p, commandType: CommandType.StoredProcedure);   
             return result.ToList();
 
         }
