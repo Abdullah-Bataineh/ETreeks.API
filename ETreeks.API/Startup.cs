@@ -5,6 +5,7 @@ using ETreeks.CORE.Service;
 using ETreeks.INFRA.Common;
 using ETreeks.INFRA.Repository;
 using ETreeks.INFRA.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -14,9 +15,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ETreeks.API
@@ -33,6 +36,28 @@ namespace ETreeks.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(opt => {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                    .AddJwtBearer(options =>
+                    {
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AbuShehab Saadeh Shalabieh Bataineh"))
+                        };
+                    });
+
+
+
+
+
+
+
             services.AddScoped<IDbContext, DbContext>();
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IRepository<Trainer>, TrainerRepository>();
@@ -44,6 +69,9 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<TrainerCourse>, TrainerCourseRepository>();
             services.AddScoped<IRepository<Role>, RoleRepository>();
+
+            services.AddScoped<IJWTRepository, JWTRepository>();
+            
 
             services.AddScoped<IRepository<AvailableTime>, AvailableTimeRepsitory>();
             services.AddScoped<IAvailableTimeRepository, AvailableTimeRepsitory>();
@@ -63,6 +91,7 @@ namespace ETreeks.API
             services.AddScoped<IService<Course>, CourseService>();
             services.AddScoped<IService<TrainerCourse>, TrainerCourseService>();
             services.AddScoped<IService<Role>, RoleService>();
+            services.AddScoped<IJWTService, JWTService>();
 
             services.AddScoped<IService<AvailableTime>, AvailableTimeService>();
             services.AddScoped<IAvailableTimeService, AvailableTimeService>();
