@@ -12,7 +12,7 @@ namespace ETreeks.CORE.Data
         public decimal Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Verify_Code { get; set; }
+        public decimal Verify_Code { get; set; }
         public decimal? Role_Id { get; set; }
         public decimal? User_Id { get; set; }
 
