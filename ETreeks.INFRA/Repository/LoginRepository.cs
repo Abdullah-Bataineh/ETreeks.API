@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ETreeks.INFRA.Repository
 {
@@ -18,21 +20,46 @@ namespace ETreeks.INFRA.Repository
             _dbContext = dbContext;
         }
 
-        public int Create(Login login)
+        public  int Create(Login login)
         {
             int result;
             var p = new DynamicParameters();
             p.Add("EMAILLOGIN", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("PASSWORDLOGIN", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CODE", login.Verify_Code, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+           Random VerfiyCode=new Random();
+            int _VerfiyCode=VerfiyCode.Next(1000,9999);
+
+            p.Add("CODE", _VerfiyCode, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
             p.Add("ROLEID", login.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("USERID", login.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+             Class1.id = _VerfiyCode;
+            var timer = new Timer(TimerVerfiyCode, null, 0, 1000);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
-            
+           
             return result;
+
+            
         }
+
+        public void TimerVerfiyCode(object o)
+        {
+
+          
+            Thread.Sleep(20000);
+            var p = new DynamicParameters();
+            p.Add("VerifyCode", Class1.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.DELETEVERIFYCODE", p, commandType: CommandType.StoredProcedure);
+            
+        }
+
+        
+           
+        
+        
 
         public int Delete(int id)
         {
@@ -74,5 +101,7 @@ namespace ETreeks.INFRA.Repository
             result = p.Get<int>("res");
             return result;
         }
+
+       
     }
 }

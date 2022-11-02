@@ -2,7 +2,8 @@
 
 namespace ETreeks.INFRA
 {
-    public class Class1
+    public static class Class1
     {
+        public static decimal? id;
     }
 }

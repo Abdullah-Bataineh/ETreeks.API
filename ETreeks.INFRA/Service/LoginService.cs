@@ -5,15 +5,18 @@ using ETreeks.INFRA.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace ETreeks.INFRA.Service
 {
     public class LoginService : IService<Login>
     {
         private readonly IRepository<Login> _loginRepository;
+       
         public LoginService(IRepository<Login> loginRepository)
         {
             _loginRepository = loginRepository;
+            
         }
 
         public bool Create(Login login)
@@ -21,7 +24,10 @@ namespace ETreeks.INFRA.Service
             int result;
             result = _loginRepository.Create(login);
             if (result == 1)
+            {
+              
                 return true;
+            }
             else
                 return false;
         }
