@@ -69,6 +69,7 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<TrainerCourse>, TrainerCourseRepository>();
             services.AddScoped<IRepository<Role>, RoleRepository>();
+            
 
             services.AddScoped<IJWTRepository, JWTRepository>();
             
