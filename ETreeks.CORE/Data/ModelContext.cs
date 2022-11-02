@@ -253,8 +253,8 @@ namespace ETreeks.CORE.Data
                     .HasColumnName("USER_ID");
 
                 entity.Property(e => e.Verify_Code)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
+                    .HasColumnType("NUMBER")
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("VERIFY_CODE");
 
                 entity.HasOne(d => d.Role)
