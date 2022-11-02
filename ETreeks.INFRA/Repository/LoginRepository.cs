@@ -30,6 +30,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
+            
             return result;
         }
 
