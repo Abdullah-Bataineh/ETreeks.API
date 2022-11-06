@@ -9,23 +9,26 @@ using System.Threading;
 
 namespace ETreeks.INFRA.Service
 {
-    public class LoginService : IService<Login>
+    public class LoginService : IService<Login>,IVerfiyAccountService
     {
         private readonly IRepository<Login> _loginRepository;
-       
-        public LoginService(IRepository<Login> loginRepository)
+        private readonly IVerfiyAccountRepository _verfiyRepository;
+
+        public LoginService(IRepository<Login> loginRepository,IVerfiyAccountRepository verfiyAccountRepository)
         {
             _loginRepository = loginRepository;
+            _verfiyRepository = verfiyAccountRepository;
             
         }
 
         public bool Create(Login login)
         {
+            
             int result;
             result = _loginRepository.Create(login);
             if (result == 1)
             {
-              
+                
                 return true;
             }
             else
@@ -56,6 +59,16 @@ namespace ETreeks.INFRA.Service
         {
             int result;
             result = _loginRepository.Update(login);
+            if (result == 1)
+                return true;
+            else
+                return false;
+        }
+
+        public bool Verfiy(int code)
+        {
+            int result;
+            result = _verfiyRepository.Verfiy(code);
             if (result == 1)
                 return true;
             else

@@ -1,5 +1,6 @@
 ﻿using ETreeks.CORE.Data;
 using ETreeks.CORE.Service;
+using ETreeks.INFRA.Repository;
 using ETreeks.INFRA.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,8 @@ namespace ETreeks.API.Controllers
         public CRUDLoginController(IService<Login> loginService)
         : base(loginService)
         {
-
+            
+            
         }
     }
 }

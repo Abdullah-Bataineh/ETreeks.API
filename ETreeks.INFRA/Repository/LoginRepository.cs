@@ -12,7 +12,28 @@ using System.Threading.Tasks;
 
 namespace ETreeks.INFRA.Repository
 {
-    public class LoginRepository : IRepository<Login>
+    public class Mythread
+    {
+        private readonly IDbContext _dbContext;
+        public Mythread(IDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+      
+        public void TimerVerfiyCode()
+        {
+
+
+            Thread.Sleep(30000);
+            var p = new DynamicParameters();
+            p.Add("L_ID", Class1.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.DELETEVERIFYCODE", p, commandType: CommandType.StoredProcedure);
+
+
+        }
+
+    }
+    public class LoginRepository : IRepository<Login>,IVerfiyAccountRepository
     {
         private readonly IDbContext _dbContext;
         public LoginRepository(IDbContext dbContext)
@@ -23,38 +44,29 @@ namespace ETreeks.INFRA.Repository
         public  int Create(Login login)
         {
             int result;
+            int login_id;
+            Random VerfiyCode = new Random();
+            int _VerfiyCode = VerfiyCode.Next(1000, 9999);
             var p = new DynamicParameters();
             p.Add("EMAILLOGIN", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("PASSWORDLOGIN", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-
-           Random VerfiyCode=new Random();
-            int _VerfiyCode=VerfiyCode.Next(1000,9999);
-
             p.Add("CODE", _VerfiyCode, dbType: DbType.Int32, direction: ParameterDirection.Input);
-
             p.Add("ROLEID", login.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("USERID", login.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
-             Class1.id = _VerfiyCode;
-            var timer = new Timer(TimerVerfiyCode, null, 0, 1000);
-            _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
+            p.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output); _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
+            login_id = p.Get<int>("LOGIN_ID");
             result = p.Get<int>("res");
-           
+            Class1.id = login_id;
+            Mythread obj = new Mythread(_dbContext);
+            Thread thread = new Thread(new ThreadStart(obj.TimerVerfiyCode));
+            thread.Start();
             return result;
-
+            
             
         }
 
-        public void TimerVerfiyCode(object o)
-        {
-
-          
-            Thread.Sleep(20000);
-            var p = new DynamicParameters();
-            p.Add("VerifyCode", Class1.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            _dbContext.Connection.Execute("LOGIN_PACKAGE.DELETEVERIFYCODE", p, commandType: CommandType.StoredProcedure);
-            
-        }
+       
 
         
            
@@ -102,6 +114,16 @@ namespace ETreeks.INFRA.Repository
             return result;
         }
 
-       
+        public int Verfiy(int code)
+        {
+            int result;
+            var p = new DynamicParameters();
+            p.Add("L_ID", Class1.id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("V_CODE", code, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.CONFIRMVERIFYCODE", p, commandType: CommandType.StoredProcedure);
+            result = p.Get<int>("RES");
+            return result;
+        }
     }
 }
