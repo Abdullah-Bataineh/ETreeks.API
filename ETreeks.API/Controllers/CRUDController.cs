@@ -1,5 +1,6 @@
 ﻿using ETreeks.CORE.Data;
 using ETreeks.CORE.Service;
+using ETreeks.INFRA.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace ETreeks.API.Controllers
         [HttpPost]
         public bool Create(T itrm)
         {
+           
           return _service.Create(itrm);
         }
         [HttpPut]        
