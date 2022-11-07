@@ -80,7 +80,7 @@ namespace ETreeks.API
             services.AddScoped<IRepository<HomePage>, HomeRepository>();
             services.AddScoped<IRepository<Reservation>, ReservationRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();
-
+            services.AddScoped<IVerfiyAccountRepository, LoginRepository>();
 
 
 
@@ -96,12 +96,12 @@ namespace ETreeks.API
             services.AddScoped<IService<Role>, RoleService>();
             services.AddScoped<IJWTService, JWTService>();
             services.AddScoped<IReservationService, ReservationService>();
-
             services.AddScoped<IService<AvailableTime>, AvailableTimeService>();
             services.AddScoped<IService<Reservation>, ReservationService>();
             services.AddScoped<IAvailableTimeService, AvailableTimeService>();
             services.AddScoped<IService<Testimonial>, TestimonialService>();
             services.AddScoped<IService<HomePage>, HomeService>();
+            services.AddScoped<IVerfiyAccountService, LoginService>();
 
             services.AddControllers();
         }

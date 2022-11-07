@@ -24,7 +24,7 @@ namespace ETreeks.INFRA.Repository
         {
 
 
-            Thread.Sleep(30000);
+            Thread.Sleep(100000);
             var p = new DynamicParameters();
             p.Add("L_ID", Class1.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.DELETEVERIFYCODE", p, commandType: CommandType.StoredProcedure);
@@ -54,7 +54,8 @@ namespace ETreeks.INFRA.Repository
             p.Add("ROLEID", login.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("USERID", login.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output); _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
+            p.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             login_id = p.Get<int>("LOGIN_ID");
             result = p.Get<int>("res");
             Class1.id = login_id;
