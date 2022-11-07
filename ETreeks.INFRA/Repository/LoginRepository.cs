@@ -11,7 +11,11 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace ETreeks.INFRA.Repository
-{
+{    public static class detalis_login
+    {
+        public static decimal? id;
+    }
+    
     public class Mythread
     {
         private readonly IDbContext _dbContext;
@@ -26,7 +30,7 @@ namespace ETreeks.INFRA.Repository
 
             Thread.Sleep(100000);
             var p = new DynamicParameters();
-            p.Add("L_ID", Class1.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("L_ID", detalis_login.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.DELETEVERIFYCODE", p, commandType: CommandType.StoredProcedure);
 
 
@@ -58,7 +62,7 @@ namespace ETreeks.INFRA.Repository
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             login_id = p.Get<int>("LOGIN_ID");
             result = p.Get<int>("res");
-            Class1.id = login_id;
+            detalis_login.id = login_id;
             Mythread obj = new Mythread(_dbContext);
             Thread thread = new Thread(new ThreadStart(obj.TimerVerfiyCode));
             thread.Start();
@@ -119,7 +123,7 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("L_ID", Class1.id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("L_ID", detalis_login.id, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("V_CODE", code, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CONFIRMVERIFYCODE", p, commandType: CommandType.StoredProcedure);
