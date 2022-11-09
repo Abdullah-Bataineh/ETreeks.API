@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
+using Org.BouncyCastle.Asn1.Crmf;
+
 
 namespace ETreeks.INFRA.Repository
 {    public static class detalis_login
@@ -41,7 +43,7 @@ namespace ETreeks.INFRA.Repository
         }
 
     }
-    public class LoginRepository : IRepository<Login>,IVerfiyAccountRepository
+    public class LoginRepository : IRepository<Login>,IVerfiyAccountRepository,ILoginRepository
     {
         private readonly IDbContext _dbContext;
         public LoginRepository(IDbContext dbContext)
@@ -85,6 +87,7 @@ namespace ETreeks.INFRA.Repository
             Mythread obj = new Mythread(_dbContext);
             Thread thread = new Thread(new ThreadStart(obj.TimerVerfiyCode));
             thread.Start();
+
             return result;
             
             
@@ -147,6 +150,19 @@ namespace ETreeks.INFRA.Repository
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CONFIRMVERIFYCODE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
+            return result;
+        }
+
+       
+
+        public string GetPhoneNumber(int id)
+        {
+            string result;
+            var p = new DynamicParameters();
+            p.Add("L_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("PH_NUM", dbType: DbType.String, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.GETPHONENUMBER", p, commandType: CommandType.StoredProcedure);
+            result = p.Get<string>("PH_NUM");
             return result;
         }
     }
