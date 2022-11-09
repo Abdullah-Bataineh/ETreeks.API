@@ -2,22 +2,28 @@
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
 using ETreeks.INFRA.Repository;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ETreeks.INFRA.Service
 {
-    public class LoginService : IService<Login>,IVerfiyAccountService
+    public class LoginService : IService<Login>,IVerfiyAccountService,ILoginService
     {
         private readonly IRepository<Login> _loginRepository;
         private readonly IVerfiyAccountRepository _verfiyRepository;
+        private readonly ILoginRepository _loginRepository1;
 
-        public LoginService(IRepository<Login> loginRepository,IVerfiyAccountRepository verfiyAccountRepository)
+        public LoginService(IRepository<Login> loginRepository,IVerfiyAccountRepository verfiyAccountRepository,ILoginRepository loginRepository1)
         {
             _loginRepository = loginRepository;
             _verfiyRepository = verfiyAccountRepository;
+              _loginRepository1 = loginRepository1;
             
         }
 
@@ -54,6 +60,15 @@ namespace ETreeks.INFRA.Service
         {
             return _loginRepository.GetById(id);
         }
+
+        public string GetPhoneNumber(int id)
+        {
+            return _loginRepository1.GetPhoneNumber(id);
+        }
+
+        
+
+       
 
         public bool Update(Login login)
         {
