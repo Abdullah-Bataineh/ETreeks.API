@@ -75,7 +75,7 @@ namespace ETreeks.INFRA.Repository
             mail.From.Add(emailFrom);
             mail.To.Add(emailTo);
             mail.Subject = "Email verification code:" + _VerfiyCode;
-            bodyBuilder.HtmlBody = "<td>        <div style='border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px' align='center' class='m_-9056096535776185231mdv2rw'>\r\n        <img src='https://i.ibb.co/Qkm8rtD/Blue-and-Black-Modern-Book-Edu-Logo-1.png' width='170' height='110' aria-hidden='true' style='margin-bottom:16px' alt='Google' class='CToWUd' data-bit='iit'>        <div style='font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word'>            <div style='font-size:24px'>Verify The Account </div>       </div>        <div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left'>            ETreeks verfiy a account the email             <a style='font-weight:bold'>"+login.Email+"</a> . <br><br>             Use this code to verfiy email: <br>            <div style='text-align:center;font-size:36px;margin-top:20px;line-height:44px'>"+_VerfiyCode+"</div> <br>            This code will expire in 2 minutes. <br> <br>         </div>        </div>\r\n            <div style='text-align:left'><div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center'>               <div>\r\n                    You received this email to let you know about important changes to your ETreeks Account and services.</div><div style='direction:ltr'>© 2022 ETreeks LLC,                </div></div></div></td>";
+            bodyBuilder.HtmlBody = "<td>        <div style='border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px' align='center' class='m_-9056096535776185231mdv2rw'>\r\n        <img src='https://iili.io/yqtacP.png' width='170' height='110' aria-hidden='true' style='margin-bottom:16px' alt='Google' class='CToWUd' data-bit='iit'>        <div style='font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word'>            <div style='font-size:24px'>Verify The Account </div>       </div>        <div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left'>            ETreeks verfiy a account the email             <a style='font-weight:bold'>" + login.Email+"</a> . <br><br>             Use this code to verfiy email: <br>            <div style='text-align:center;font-size:36px;margin-top:20px;line-height:44px'>"+_VerfiyCode+"</div> <br>            This code will expire in 2 minutes. <br> <br>         </div>        </div>\r\n            <div style='text-align:left'><div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center'>               <div>\r\n                    You received this email to let you know about important changes to your ETreeks Account and services.</div><div style='direction:ltr'>© 2022 ETreeks LLC,                </div></div></div></td>";
             mail.Body = bodyBuilder.ToMessageBody();
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 465,true); 
@@ -155,14 +155,18 @@ namespace ETreeks.INFRA.Repository
 
        
 
-        public string GetPhoneNumber(int id)
+        public List<string> GetPhoneNumber(int id)
         {
-            string result;
+            string d="";
+            int y=0;
+            List<string> result = new List<string>();
             var p = new DynamicParameters();
             p.Add("L_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("PH_NUM", dbType: DbType.String, direction: ParameterDirection.Output);
+           p.Add("PH_NUM",d, dbType: DbType.String, direction: ParameterDirection.Output);
+           p.Add("V_CODE",y, dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.GETPHONENUMBER", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<string>("PH_NUM");
+            result.Add(p.Get<string>("PH_NUM"));
+            result.Add(p.Get<int>("V_CODE").ToString());
             return result;
         }
     }

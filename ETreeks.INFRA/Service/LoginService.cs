@@ -61,7 +61,7 @@ namespace ETreeks.INFRA.Service
             return _loginRepository.GetById(id);
         }
 
-        public string GetPhoneNumber(int id)
+        public List<string> GetPhoneNumber(int id)
         {
             return _loginRepository1.GetPhoneNumber(id);
         }

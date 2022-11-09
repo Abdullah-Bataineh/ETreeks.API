@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ETreeks.API.Controllers
 {
@@ -28,14 +29,17 @@ namespace ETreeks.API.Controllers
         [Route("SendWhatsapp/{id}")]
         public async Task<HttpResponseMessage> SendWhatspp(int id)
         {
-            string phonenumber = _loginService.GetPhoneNumber(id);
+            List<string> detalis = new List<string>();
+            detalis = _loginService.GetPhoneNumber(id);
+            string phonenumber = detalis[0];
             string _phonenumber ="+962"+ phonenumber.Substring(0);
+            string v_code=detalis[1];
             
             var my_jsondata = new
             {
                 token = "nskumfqyf35lk0d2",
                 to = _phonenumber,
-                body = "hi"
+                body = $"Dear Etreeks User,\r\nWe received a request to Register your Account at Etreeks\r\nYour  verification code is:\r\n*{v_code}*\r\nSincerely yours,\r\nThe Etreeks Accounts team"
             };
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.ultramsg.com/instance22564/messages/chat?token={my_jsondata.token}&to={my_jsondata.to}&body={my_jsondata.body}"))
