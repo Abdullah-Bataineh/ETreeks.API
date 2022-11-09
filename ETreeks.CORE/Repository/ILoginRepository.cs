@@ -9,6 +9,6 @@ namespace ETreeks.CORE.Repository
     public interface ILoginRepository
     {
        
-        public string GetPhoneNumber(int id);
+        public List<string> GetPhoneNumber(int id);
     }
 }

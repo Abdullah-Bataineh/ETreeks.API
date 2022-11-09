@@ -8,6 +8,6 @@ namespace ETreeks.CORE.Service
 {
     public interface ILoginService
     {
-        public string GetPhoneNumber(int id);
+        public List<string> GetPhoneNumber(int id);
     }
 }
