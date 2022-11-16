@@ -128,9 +128,9 @@ namespace ETreeks.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseCors("policy");
+            app.UseAuthorization();
+            
 
             app.UseAuthentication();
 
