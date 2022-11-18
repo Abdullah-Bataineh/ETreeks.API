@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ETreeks.INFRA.Repository
 {
-    public class CourseRepository : IRepository<Course>
+    public class CourseRepository : IRepository<Course>, ICourseRepository
     {
         private readonly IDbContext _dbContext;
         public CourseRepository(IDbContext dbContext)
@@ -56,7 +56,13 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<Course> result = _dbContext.Connection.Query<Course>("COURSE_PACKAGE.GETCOURSEBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
-
+        public List<Course> GetByCatId(int cat_id)
+        {
+            var p = new DynamicParameters();
+            p.Add("catID", cat_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Course> result = _dbContext.Connection.Query<Course>("COURSE_PACKAGE.GETCOURSEBYCATID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public int Update(Course course)
         {
             int result;

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using ETreeks.CORE.Service;
+using System.Collections.Generic;
 
 namespace ETreeks.API.Controllers
 {
@@ -10,6 +12,11 @@ namespace ETreeks.API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
+        private readonly ICourseService _courseService;
+        public CourseController(ICourseService courseService)
+        {
+           _courseService = courseService;
+        }
         [Route("uploadImage")]
         [HttpPost]
         public Course UploadIMage()
@@ -25,6 +32,12 @@ namespace ETreeks.API.Controllers
             item.IMAGE = fileName;
             return item;
 
+        }
+        [HttpGet]
+        [Route("getbycatid/{cat_id}")]
+        public List<Course> GetByCatId(int cat_id)
+        {
+            return _courseService.GetByCatId(cat_id);
         }
     }
 }
