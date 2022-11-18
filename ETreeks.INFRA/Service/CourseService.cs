@@ -7,12 +7,14 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class CourseService : IService<Course>
+    public class CourseService : IService<Course>,ICourseService
     {
         private readonly IRepository<Course> _courseRepository;
-        public CourseService(IRepository<Course> courseRepository)
+        private readonly ICourseRepository _course;
+        public CourseService(IRepository<Course> courseRepository, ICourseRepository course)
         {
             _courseRepository = courseRepository;
+            _course = course;
         }
 
         public bool Create(Course course)
@@ -54,6 +56,10 @@ namespace ETreeks.INFRA.Service
                 return true;
             else
                 return false;
+        }
+        public List<Course> GetByCatId(int cat_id)
+        {
+            return _course.GetByCatId(cat_id);
         }
     }
 }

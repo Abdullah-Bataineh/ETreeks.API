@@ -79,7 +79,7 @@ namespace ETreeks.API
             services.AddScoped<IRepository<TrainerCourse>, TrainerCourseRepository>();
             services.AddScoped<IRepository<Role>, RoleRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
-            
+            services.AddScoped<ICourseRepository, CourseRepository>();
 
             services.AddScoped<IJWTRepository, JWTRepository>();
             
@@ -113,7 +113,7 @@ namespace ETreeks.API
             services.AddScoped<IService<HomePage>, HomeService>();
             services.AddScoped<IVerfiyAccountService, LoginService>();
             services.AddScoped<ILoginService, LoginService>();
-
+            services.AddScoped<ICourseService, CourseService>();
             services.AddControllers();
         }
 
