@@ -15,7 +15,8 @@ namespace ETreeks.CORE.Data
 
         public decimal Id { get; set; }
         public string CATEGORY_NAME { get; set; }
-
+        public string IMAGE { get; set; }
+        public string DESCRIPTION { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
         public virtual ICollection<Trainer> Trainers { get; set; }
     }

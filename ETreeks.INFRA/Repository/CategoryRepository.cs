@@ -23,6 +23,9 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("NAME", category.CATEGORY_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("cat_image", category.CATEGORY_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("cat_desc", category.DESCRIPTION, dbType: DbType.String, direction: ParameterDirection.Input);
+            
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CATEGORY_PACKAGE.CREATECATEGORY", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -60,7 +63,8 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("CATEGORYID", category.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("NAME", category.CATEGORY_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-
+            p.Add("cat_image", category.CATEGORY_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("cat_desc", category.DESCRIPTION, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("CATEGORY_PACKAGE.UPDATECATEGORY", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
