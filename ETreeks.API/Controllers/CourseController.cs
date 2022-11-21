@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using ETreeks.CORE.Service;
 using System.Collections.Generic;
+using ETreeks.CORE.DTO;
 
 namespace ETreeks.API.Controllers
 {
@@ -38,6 +39,12 @@ namespace ETreeks.API.Controllers
         public List<Course> GetByCatId(int cat_id)
         {
             return _courseService.GetByCatId(cat_id);
+        }
+        [HttpGet]
+        [Route("getcoursewithcategory")]
+        public List<CourseWithCategory> GetCourseWithCategory()
+        {
+            return _courseService.GetCourseWithCategory();
         }
     }
 }
