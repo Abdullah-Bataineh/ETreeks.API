@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using ETreeks.CORE.Common;
 using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,12 @@ namespace ETreeks.INFRA.Repository
             _dbContext.Connection.Execute("COURSE_PACKAGE.UPDATECOURSE", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
             return result;
+        }
+
+        public List<CourseWithCategory> GetCourseWithCategory()
+        {
+            IEnumerable<CourseWithCategory> result = _dbContext.Connection.Query<CourseWithCategory>("COURSE_PACKAGE.GETCOURSEWITHCATEGORY", commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
     }
 }
