@@ -12,6 +12,13 @@ namespace ETreeks.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private  readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [Route("uploadImage")]
         [HttpPost]
         public User UploadIMage()
@@ -27,6 +34,12 @@ namespace ETreeks.API.Controllers
             item.Image = fileName;
             return item;
 
+        }
+        [Route("Search/{c_name}")]
+        [HttpGet]
+        public List<User> Search(string c_name)
+        {
+            return _userService.Search(c_name); 
         }
     }
 }

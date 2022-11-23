@@ -7,13 +7,15 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class UserService:IService<User>
+    public class UserService:IService<User>,IUserService
     {
         private readonly IRepository<User> _repository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IRepository<User> repository)
+        public UserService(IRepository<User> repository, IUserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public bool Create(User user)
@@ -44,6 +46,11 @@ namespace ETreeks.INFRA.Service
         public User GetById(int id)
         {
             return _repository.GetById(id);
+        }
+
+        public List<User> Search(string c_name)
+        {
+           return _userRepository.Search(c_name);
         }
 
         public bool Update(User user)
