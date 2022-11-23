@@ -17,7 +17,7 @@ namespace ETreeks.API.Controllers
             _testimonialService = testimonialService;
         }
         [HttpGet]
-        [Route("getall")]
+        [Route("GetAllTistimonialUser")]
         public List<TistimonialWithUserName> GetAllTistimonialWithUserName()
         {
             return _testimonialService.GetAllTistimonialWithUserName();
