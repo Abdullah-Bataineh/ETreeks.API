@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using ETreeks.CORE.DTO;
 
 namespace ETreeks.INFRA.Repository
 {//abdullah
-    public class TestimonialRepository : IRepository<Testimonial>
+    public class TestimonialRepository : IRepository<Testimonial>,ITestimonialRepository
     {
         private readonly IDbContext _dbContext;
         public TestimonialRepository(IDbContext dbContext)
@@ -45,6 +46,12 @@ namespace ETreeks.INFRA.Repository
         public List<Testimonial> GetAll()
         {
             IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("TESTIMONIAL_PACKAGE.GETALLTESTIMONIAL", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<TistimonialWithUserName> GetAllTistimonialWithUserName()
+        {
+            IEnumerable<TistimonialWithUserName> result = _dbContext.Connection.Query<TistimonialWithUserName>("TESTIMONIAL_PACKAGE.GETALLTESTIMONIALWITHUSERNAME", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

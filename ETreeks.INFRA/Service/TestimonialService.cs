@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
 using ETreeks.INFRA.Repository;
@@ -8,9 +9,10 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {//abdullah
-    public class TestimonialService : IService<Testimonial>
+    public class TestimonialService : IService<Testimonial>,ITestimonialService
     {
         private readonly IRepository<Testimonial> _testimonialrepository;
+        private readonly ITestimonialRepository _repository;
 
         public TestimonialService(IRepository<Testimonial> testimonialrepository)
         {
@@ -39,6 +41,11 @@ namespace ETreeks.INFRA.Service
         public List<Testimonial> GetAll()
         {
            return _testimonialrepository.GetAll();
+        }
+
+        public List<TistimonialWithUserName> GetAllTistimonialWithUserName()
+        {
+            return _repository.GetAllTistimonialWithUserName();
         }
 
         public Testimonial GetById(int id)
