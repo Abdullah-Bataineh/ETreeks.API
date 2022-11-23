@@ -15,7 +15,7 @@ namespace ETreeks.CORE.DTO
         public string Last_Name { get; set; }
         public string Image { get; set; }
 
-        public virtual User User { get; set; }
+       
 
 
     }

@@ -7,6 +7,6 @@ namespace ETreeks.CORE.Service
 {
     public interface ITestimonialService
     {
-        List<TistimonialWithUserName> GetAllTistimonialWithUserName();
+        public List<TistimonialWithUserName> GetAllTistimonialWithUserName();
     }
 }
