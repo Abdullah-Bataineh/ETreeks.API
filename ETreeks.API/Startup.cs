@@ -91,9 +91,10 @@ namespace ETreeks.API
             services.AddScoped<IRepository<Reservation>, ReservationRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<IVerfiyAccountRepository, LoginRepository>();
+            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 
 
-
+            services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IService<Category>, CategoryService>();
             services.AddScoped<IService<Trainer>, TrainerService>();
             services.AddScoped<IService<ContactInfo>, ContactInfoService>();

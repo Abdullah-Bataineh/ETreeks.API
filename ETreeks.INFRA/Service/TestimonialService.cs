@@ -14,9 +14,10 @@ namespace ETreeks.INFRA.Service
         private readonly IRepository<Testimonial> _testimonialrepository;
         private readonly ITestimonialRepository _repository;
 
-        public TestimonialService(IRepository<Testimonial> testimonialrepository)
+        public TestimonialService(IRepository<Testimonial> testimonialrepository,ITestimonialRepository tRepository)
         {
             _testimonialrepository= testimonialrepository;
+            _repository = tRepository;
         }
         public bool Create(Testimonial testimonial)
         {
