@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ETreeks.INFRA.Repository
 {
-    public class UserRepository:IRepository<User>
+    public class UserRepository:IRepository<User>,IUserRepository
     {
         private readonly IDbContext _dbContext;
         public UserRepository(IDbContext dbContext)
@@ -72,6 +72,14 @@ namespace ETreeks.INFRA.Repository
             _dbContext.Connection.Execute("USERS_PACKAGE.UPDATEUSERS", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
             return result;
+        }
+        public List<User> Search(string c_name)
+        {
+            var p = new DynamicParameters();
+            p.Add("u_name", c_name, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<User> result = _dbContext.Connection.Query<User>("USERS_PACKAGE.SEARCHUSERS", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
         }
     }
 }
