@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETreeks.CORE.Data;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -10,5 +11,6 @@ namespace ETreeks.CORE.Service
     {
         public List<string> GetPhoneNumber(int id);
         public void DELETEVERIFYCODE(int id);
+        public int CreateLogIn(Login login);
     }
 }

@@ -93,5 +93,9 @@ namespace ETreeks.INFRA.Service
             else
                 return false;
         }
+        public int CreateLogIn(Login login)
+        {
+            return _loginRepository1.CreateLogIn(login);    
+        }
     }
 }

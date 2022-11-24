@@ -5,8 +5,10 @@ using System.Text;
 
 namespace ETreeks.CORE.Repository
 {
-    public  interface IUserRepository
+    public interface IUserRepository
     {
         public List<User> Search(string c_name);
+        public int CreateUser(User user);
     }
+        
 }

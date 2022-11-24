@@ -93,5 +93,13 @@ namespace ETreeks.API.Controllers
         {
             _loginService.DELETEVERIFYCODE(id);
         }
+
+
+        [HttpPost]
+        [Route("Create")]
+        public int CreateLogIn(Login login)
+        {
+            return _loginService.CreateLogIn(login);
+        }
     }
 }

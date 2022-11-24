@@ -18,7 +18,7 @@ namespace ETreeks.INFRA.Repository
             _dbContext = dbContext;
         }
 
-        public int Create(User user)
+        public int CreateUser(User user)
         {
             int result;
             var p = new DynamicParameters();
@@ -80,6 +80,11 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<User> result = _dbContext.Connection.Query<User>("USERS_PACKAGE.SEARCHUSERS", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
 
+        }
+
+        public int Create(User t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,5 +8,6 @@ namespace ETreeks.CORE.Service
     public interface IUserService
     {
         public List<User> Search(string c_name);
+        public int CreateUser(User user);
     }
 }
