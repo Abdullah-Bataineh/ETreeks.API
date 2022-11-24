@@ -9,5 +9,6 @@ namespace ETreeks.CORE.Service
     public interface ILoginService
     {
         public List<string> GetPhoneNumber(int id);
+        public void DELETEVERIFYCODE(int id);
     }
 }

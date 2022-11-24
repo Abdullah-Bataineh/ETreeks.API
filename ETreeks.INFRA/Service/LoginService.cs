@@ -66,9 +66,13 @@ namespace ETreeks.INFRA.Service
             return _loginRepository1.GetPhoneNumber(id);
         }
 
-        
+        public void DELETEVERIFYCODE(int id)
+        {
+            _loginRepository1.DELETEVERIFYCODE(id); 
+        }
 
-       
+
+
 
         public bool Update(Login login)
         {
