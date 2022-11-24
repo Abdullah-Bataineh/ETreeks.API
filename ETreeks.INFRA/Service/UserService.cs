@@ -62,5 +62,11 @@ namespace ETreeks.INFRA.Service
             else
                 return false;
         }
+
+        public int CreateUser(User user)
+        {
+            return _userRepository.CreateUser(user);    
+        }
+
     }
 }

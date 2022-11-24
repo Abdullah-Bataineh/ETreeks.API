@@ -41,5 +41,13 @@ namespace ETreeks.API.Controllers
         {
             return _userService.Search(c_name); 
         }
+
+        [Route("CreateUser")]
+        [HttpPost]
+        public int Create(User user)
+        {
+
+            return _userService.CreateUser(user);
+        }
     }
 }

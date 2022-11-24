@@ -30,8 +30,8 @@ namespace ETreeks.INFRA.Repository
         {
             _dbContext = dbContext;
         }
-
-        public  int Create(Login login)
+       
+        public  int CreateLogIn(Login login)
         {
             int result;
             int login_id;
@@ -47,7 +47,7 @@ namespace ETreeks.INFRA.Repository
             p.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure);
             login_id = p.Get<int>("LOGIN_ID");
-            result = p.Get<int>("res");
+            result = login_id;
 
 
                          
@@ -150,6 +150,11 @@ namespace ETreeks.INFRA.Repository
             result.Add(p.Get<string>("PH_NUM"));
             result.Add(p.Get<int>("V_CODE").ToString());
             return result;
+        }
+
+        public int Create(Login t)
+        {
+            throw new NotImplementedException();
         }
     }
 }
