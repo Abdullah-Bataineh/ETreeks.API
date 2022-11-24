@@ -10,5 +10,6 @@ namespace ETreeks.CORE.Service
     {
         public List<Course> GetByCatId(int cat_id);
         public List<CourseWithCategory> GetCourseWithCategory();
+        public List<Course> Search(string c_name);
     }
 }

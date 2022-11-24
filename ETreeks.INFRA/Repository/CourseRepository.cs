@@ -84,5 +84,15 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<CourseWithCategory> result = _dbContext.Connection.Query<CourseWithCategory>("COURSE_PACKAGE.GETCOURSEWITHCATEGORY", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+
+        public List<Course> Search(string c_name)
+        {
+            var p = new DynamicParameters();
+            p.Add("c_name", c_name, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<Course> result = _dbContext.Connection.Query<Course>("COURSE_PACKAGE.SEARCHCOURSES", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
+        }
     }
 }
