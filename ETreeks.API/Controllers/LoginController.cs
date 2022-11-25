@@ -82,7 +82,7 @@ namespace ETreeks.API.Controllers
            
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("imap.gmail.com", 465, true);
-            smtpClient.Authenticate("etrreks123@gmail.com", "Jmma@123");
+            smtpClient.Authenticate("etrreks123@gmail.com", "waozndqxwxgzvirc");
             smtpClient.Send(mail);
             smtpClient.Disconnect(true);
             smtpClient.Dispose();
