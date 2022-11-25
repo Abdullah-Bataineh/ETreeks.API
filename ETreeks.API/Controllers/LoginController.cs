@@ -20,19 +20,20 @@ namespace ETreeks.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-
+        private readonly IService<Login> _service;
         private readonly ILoginService _loginService;
-        public LoginController(ILoginService loginService)
+        public LoginController(ILoginService loginService, IService<Login> service)
         {
 
             _loginService = loginService;
+            _service = service;
         }
         [HttpPost]
-        [Route("SendWhatsapp/{id}")]
-        public async Task<HttpResponseMessage> SendWhatspp(int id)
+        [Route("SendWhatsapp/{user_id}")]
+        public async Task<HttpResponseMessage> SendWhatspp(int user_id)
         {
             List<string> detalis = new List<string>();
-            detalis = _loginService.GetPhoneNumber(id);
+            detalis = _loginService.GetPhoneNumber(user_id);
             string phonenumber = detalis[0];
             string _phonenumber ="+962"+ phonenumber.Substring(0);
             string v_code=detalis[1];
@@ -64,23 +65,23 @@ namespace ETreeks.API.Controllers
         }
 
         [HttpPost]
-        [Route("SendEmail")]
-        public void SendEmail(int _VerfiyCode, string Email)
+        [Route("SendEmail/{login_id}")]
+        public void SendEmail(int login_id)
         {
 
-
+           var login= _service.GetById(login_id);
             MimeMessage mail = new MimeMessage();
-            MailboxAddress emailFrom = new MailboxAddress("ETreeks", "mohammedshalabieh@gmail.com");
-            MailboxAddress emailTo = new MailboxAddress("Email verification code:" + _VerfiyCode, Email);
+            MailboxAddress emailFrom = new MailboxAddress("ETreeks", "abdtawil211@gmail.com");
+            MailboxAddress emailTo = new MailboxAddress("Email verification code:" + login.Verify_Code, login.Email);
             BodyBuilder bodyBuilder = new BodyBuilder();
             mail.From.Add(emailFrom);
             mail.To.Add(emailTo);
-            mail.Subject = "Email verification code:" + _VerfiyCode;
-            bodyBuilder.HtmlBody = "<td>        <div style='border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px' align='center' class='m_-9056096535776185231mdv2rw'>\r\n        <img src='' width='170' height='110' aria-hidden='true' style='margin-bottom:16px' alt='Google' class='CToWUd' data-bit='iit'>        <div style='font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word'>            <div style='font-size:24px'>Verify The Account </div>       </div>        <div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left'>            ETreeks verfiy a account the email             <a style='font-weight:bold'>" +Email + "</a> . <br><br>             Use this code to verfiy email: <br>            <div style='text-align:center;font-size:36px;margin-top:20px;line-height:44px'>" + _VerfiyCode + "</div> <br>            This code will expire in 2 minutes. <br> <br>         </div>        </div>\r\n            <div style='text-align:left'><div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center'>               <div>\r\n                    You received this email to let you know about important changes to your ETreeks Account and services.</div><div style='direction:ltr'>© 2022 ETreeks LLC,                </div></div></div></td>";
+            mail.Subject = "Email verification code:" + login.Verify_Code;
+            bodyBuilder.HtmlBody = "<td>        <div style='border-style:solid;border-width:thin;border-color:#dadce0;border-radius:8px;padding:40px 20px' align='center' class='m_-9056096535776185231mdv2rw'>\r\n        <img src='' width='170' height='110' aria-hidden='true' style='margin-bottom:16px' alt='Google' class='CToWUd' data-bit='iit'>        <div style='font-family:'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;border-bottom:thin solid #dadce0;color:rgba(0,0,0,0.87);line-height:32px;padding-bottom:24px;text-align:center;word-break:break-word'>            <div style='font-size:24px'>Verify The Account </div>       </div>        <div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:14px;color:rgba(0,0,0,0.87);line-height:20px;padding-top:20px;text-align:left'>            ETreeks verfiy a account the email             <a style='font-weight:bold'>" +login.Email + "</a> . <br><br>             Use this code to verfiy email: <br>            <div style='text-align:center;font-size:36px;margin-top:20px;line-height:44px'>" + login.Verify_Code + "</div> <br>            This code will expire in 2 minutes. <br> <br>         </div>        </div>\r\n            <div style='text-align:left'><div style='font-family:Roboto-Regular,Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.54);font-size:11px;line-height:18px;padding-top:12px;text-align:center'>               <div>\r\n                    You received this email to let you know about important changes to your ETreeks Account and services.</div><div style='direction:ltr'>© 2022 ETreeks LLC,                </div></div></div></td>";
             mail.Body = bodyBuilder.ToMessageBody();
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 465, true);
-            smtpClient.Authenticate("mohammedshalabieh@gmail.com", "b3t3e9w7");
+            smtpClient.Authenticate("abdtawil211@gmail.com", "testmmja12344");
             smtpClient.Send(mail);
             smtpClient.Disconnect(true);
             smtpClient.Dispose();
