@@ -70,7 +70,7 @@ namespace ETreeks.API.Controllers
 
 
             MimeMessage mail = new MimeMessage();
-            MailboxAddress emailFrom = new MailboxAddress("ETreeks", "abdtawil211@gmail.com");
+            MailboxAddress emailFrom = new MailboxAddress("ETreeks", "mohammedshalabieh@gmail.com");
             MailboxAddress emailTo = new MailboxAddress("Email verification code:" + _VerfiyCode, Email);
             BodyBuilder bodyBuilder = new BodyBuilder();
             mail.From.Add(emailFrom);
@@ -80,7 +80,7 @@ namespace ETreeks.API.Controllers
             mail.Body = bodyBuilder.ToMessageBody();
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 465, true);
-            smtpClient.Authenticate("abdtawil211@gmail.com", "nmszvbbiezmchnyz");
+            smtpClient.Authenticate("mohammedshalabieh@gmail.com", "b3t3e9w7");
             smtpClient.Send(mail);
             smtpClient.Disconnect(true);
             smtpClient.Dispose();
