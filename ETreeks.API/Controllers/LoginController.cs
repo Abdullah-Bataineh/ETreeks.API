@@ -35,17 +35,18 @@ namespace ETreeks.API.Controllers
             List<string> detalis = new List<string>();
             detalis = _loginService.GetPhoneNumber(user_id);
             string phonenumber = detalis[0];
-            string _phonenumber ="+962"+ phonenumber.Substring(0);
+            string _phonenumber = phonenumber.Substring(0);
             string v_code=detalis[1];
             
             var my_jsondata = new
             {
-                token = "nskumfqyf35lk0d2",
+                token = "y6avmc4dy3mjyyre",
                 to = _phonenumber,
                 body = $"Dear Etreeks User,\r\nWe received a request to Register your Account at Etreeks\r\nYour  verification code is:\r\n*{v_code}*\r\nSincerely yours,\r\nThe Etreeks Accounts team"
             };
             using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.ultramsg.com/instance22564/messages/chat?token={my_jsondata.token}&to={my_jsondata.to}&body={my_jsondata.body}"))
+             
+                using (var request = new HttpRequestMessage(HttpMethod.Post, $" https://api.ultramsg.com/instance24420/messages/chat?token={my_jsondata.token}&to={my_jsondata.to}&body={my_jsondata.body}"))
             {
                 var json = JsonConvert.SerializeObject(my_jsondata);
                 using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
