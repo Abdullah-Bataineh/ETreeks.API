@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
 using System;
@@ -63,9 +64,9 @@ namespace ETreeks.INFRA.Service
                 return false;
         }
 
-        public int CreateUser(User user)
+        public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin)
         {
-            return _userRepository.CreateUser(user);    
+            return _userRepository.CreateUser(userlogin);    
         }
 
     }

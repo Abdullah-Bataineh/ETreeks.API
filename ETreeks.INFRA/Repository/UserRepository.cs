@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using ETreeks.CORE.Common;
 using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,41 @@ namespace ETreeks.INFRA.Repository
             _dbContext = dbContext;
         }
 
-        public int CreateUser(User user)
+        public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin)
         {
-            int result;
+            int user_id;
             var p = new DynamicParameters();
-            p.Add("FIRSTNAME", user.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LASTNAME", user.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("BIRTHDATE", user.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("PHONENUMBER", user.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("IMAGEUSER", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("FIRSTNAME", userlogin.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LASTNAME", userlogin.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("BIRTHDATE", userlogin.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("PHONENUMBER", userlogin.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("IMAGEUSER", userlogin.Image, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("USERS_PACKAGE.CREATEUSERS", p, commandType: CommandType.StoredProcedure);
-            result = p.Get<int>("RES");
-            return result;
+            user_id = p.Get<int>("RES");
+
+            int login_id;
+            Random VerfiyCode = new Random();
+            int _VerfiyCode = VerfiyCode.Next(1000, 9999);
+            var p1 = new DynamicParameters();
+            p1.Add("EMAILLOGIN", userlogin.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p1.Add("PASSWORDLOGIN", userlogin.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p1.Add("CODE", _VerfiyCode, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("ROLEID", userlogin.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("USERID", user_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p1.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure); login_id = p.Get<int>("LOGIN_ID");
+            
+
+            var myList = new List<KeyValuePair<string, int>>();
+
+            // adding elements
+            myList.Add(new KeyValuePair<string, int>("login_id", login_id));
+            myList.Add(new KeyValuePair<string, int>("user_id", user_id));
+
+
+            return myList;
         }
 
         public int Delete(int id)
