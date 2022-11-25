@@ -43,7 +43,7 @@ namespace ETreeks.INFRA.Repository
             p1.Add("USERID", user_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p1.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p1.Add("LOGIN_ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p, commandType: CommandType.StoredProcedure); login_id = p.Get<int>("LOGIN_ID");
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.CREATELOGIN", p1, commandType: CommandType.StoredProcedure); login_id = p1.Get<int>("LOGIN_ID");
             
 
             var myList = new List<KeyValuePair<string, int>>();
