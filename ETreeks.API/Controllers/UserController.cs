@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,10 +45,10 @@ namespace ETreeks.API.Controllers
 
         [Route("CreateUser")]
         [HttpPost]
-        public int Create(User user)
+        public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin)
         {
 
-            return _userService.CreateUser(user);
+            return _userService.CreateUser(userlogin);
         }
     }
 }
