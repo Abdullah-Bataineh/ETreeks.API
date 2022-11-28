@@ -50,5 +50,13 @@ namespace ETreeks.API.Controllers
 
             return _userService.CreateUser(userlogin);
         }
+
+        [Route("Update")]
+        [HttpPost]
+        public bool Update(UserLogin userlogin)
+        {
+
+            return true;
+        }
     }
 }
