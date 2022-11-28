@@ -4,9 +4,8 @@ using System.Text;
 
 namespace ETreeks.CORE.DTO
 {
-    public class UserLogin
+    public class TrainerLogin
     {
-        
         public decimal Id { get; set; }
 
         public decimal? User_Id { get; set; }
@@ -19,8 +18,10 @@ namespace ETreeks.CORE.DTO
         public string Password { get; set; }
         public decimal Verify_Code { get; set; }
         public decimal? Role_Id { get; set; }
-      
-        
-
+        public string Certificate { get; set; }
+        public string Location { get; set; }
+        public decimal? Status { get; set; }
+        public string Cv { get; set; }
+        public decimal? Cat_Id { get; set; }
     }
 }
