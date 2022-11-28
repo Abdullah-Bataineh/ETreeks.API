@@ -109,5 +109,37 @@ namespace ETreeks.INFRA.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void Updateuserlogin(UserLogin userlogin)
+        {
+            int result;
+            var p = new DynamicParameters();
+            p.Add("USERID", userlogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("FIRSTNAME", userlogin.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LASTNAME", userlogin.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("BIRTHDATE", userlogin.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("PHONENUMBER", userlogin.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("IMAGEUSER", userlogin.Image, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("USERS_PACKAGE.UPDATEUSERS", p, commandType: CommandType.StoredProcedure);
+            result = p.Get<int>("RES");
+           
+
+
+
+
+            int result1;
+            var p1 = new DynamicParameters();
+            p1.Add("LOGINID", userlogin.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("EMAILLOGIN", userlogin.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p1.Add("PASSWORDLOGIN", userlogin.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p1.Add("CODE", userlogin.Verify_Code, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("ROLEID", userlogin.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("USERID", userlogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p1.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.UPDATELOGIN", p1, commandType: CommandType.StoredProcedure);
+            result1 = p1.Get<int>("res");
+           
+        }
     }
 }

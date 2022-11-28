@@ -6,6 +6,10 @@ namespace ETreeks.CORE.DTO
 {
     public class UserLogin
     {
+        
+        public decimal Id { get; set; }
+
+        public decimal? User_Id { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string Phone_Number { get; set; }

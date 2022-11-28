@@ -107,6 +107,14 @@ namespace ETreeks.INFRA.Repository
             return result.FirstOrDefault();
         }
 
+        public Login GetByUserId(int userid)
+        {
+            var p = new DynamicParameters();
+            p.Add("USERINID", userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Login> result = _dbContext.Connection.Query<Login>("LOGIN_PACKAGE.GETLOGINBYUSERID", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
         public int Update(Login login)
         {
             int result;

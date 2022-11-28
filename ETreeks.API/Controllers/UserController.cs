@@ -52,11 +52,11 @@ namespace ETreeks.API.Controllers
         }
 
         [Route("Update")]
-        [HttpPost]
-        public bool Update(UserLogin userlogin)
+        [HttpPut]
+        public void Updateuserlogin(UserLogin userlogin)
         {
 
-            return true;
+             _userService.Updateuserlogin(userlogin);
         }
     }
 }
