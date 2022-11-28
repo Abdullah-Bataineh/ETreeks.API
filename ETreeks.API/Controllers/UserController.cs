@@ -36,6 +36,24 @@ namespace ETreeks.API.Controllers
             return item;
 
         }
+
+        [Route("UploadFile")]
+        [HttpPost]
+        public Trainer UploadFile()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine(@"C:\ETreeks\src\assets\files", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            Trainer item = new Trainer();
+            item.Certificate = fileName;
+            return item;
+
+        }
+
         [Route("Search/{c_name}")]
         [HttpGet]
         public List<User> Search(string c_name)
