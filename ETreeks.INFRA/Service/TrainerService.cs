@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using ETreeks.CORE.Service;
 using System;
@@ -7,13 +8,15 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class TrainerService : IService<Trainer>
+    public class TrainerService : IService<Trainer>,ITrainerService
     {
         private readonly IRepository<Trainer> _trainerRepository;
+        private readonly ITrainerRepository _repositry;
 
-        public TrainerService(IRepository<Trainer> trainerRepository)
+        public TrainerService(IRepository<Trainer> trainerRepository, ITrainerRepository repositry)
         {
             _trainerRepository = trainerRepository;
+            _repositry = repositry;
         }
 
         public bool Create(Trainer trainer)
@@ -24,6 +27,11 @@ namespace ETreeks.INFRA.Service
                 return true;
             else
                 return false;
+        }
+
+        public List<KeyValuePair<string,int>> CreateTrainer(TrainerLogin trainerlogin)
+        {
+            return _repositry.CreateTrainer(trainerlogin);
         }
 
         public bool Delete(int id)
