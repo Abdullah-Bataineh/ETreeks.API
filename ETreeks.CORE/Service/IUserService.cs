@@ -10,5 +10,7 @@ namespace ETreeks.CORE.Service
     {
         public List<User> Search(string c_name);
         public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin);
+
+        public void Updateuserlogin(UserLogin userlogin);
     }
 }

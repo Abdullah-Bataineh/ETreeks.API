@@ -104,5 +104,13 @@ namespace ETreeks.API.Controllers
         {
             return _loginService.CreateLogIn(login);
         }
+
+        [HttpGet]
+        [Route("GetByUserId/{userid}")]
+        public Login GetByUserId(int userid)
+        {
+            return _loginService.GetByUserId(userid);
+
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace ETreeks.CORE.Repository
     {
         public List<User> Search(string c_name);
         public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin);
+
+        public void Updateuserlogin(UserLogin userlogin);
     }
         
 }

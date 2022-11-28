@@ -69,5 +69,10 @@ namespace ETreeks.INFRA.Service
             return _userRepository.CreateUser(userlogin);    
         }
 
+        public void Updateuserlogin(UserLogin userlogin)
+        {
+             _userRepository.Updateuserlogin(userlogin);
+        }
+
     }
 }

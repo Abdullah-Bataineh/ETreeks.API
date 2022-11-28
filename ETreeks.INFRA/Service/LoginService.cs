@@ -97,5 +97,11 @@ namespace ETreeks.INFRA.Service
         {
             return _loginRepository1.CreateLogIn(login);    
         }
+
+        public Login GetByUserId(int userid)
+        {
+            return _loginRepository1.GetByUserId(userid);
+
+        }
     }
 }

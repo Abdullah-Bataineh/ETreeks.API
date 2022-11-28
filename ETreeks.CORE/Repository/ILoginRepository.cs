@@ -13,6 +13,8 @@ namespace ETreeks.CORE.Repository
         public List<string> GetPhoneNumber(int id);
         public void DELETEVERIFYCODE(int id);
 
-        public int CreateLogIn(Login login); 
+        public int CreateLogIn(Login login);
+
+        public Login GetByUserId(int userid);
     }
 }
