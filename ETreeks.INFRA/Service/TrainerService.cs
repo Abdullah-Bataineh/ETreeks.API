@@ -54,6 +54,16 @@ namespace ETreeks.INFRA.Service
             return _trainerRepository.GetById(id);
         }
 
+        public trainerEmail getTrainerEmailbyId(int id)
+        {
+            return _repositry.getTrainerEmailbyId(id);
+        }
+
+        public List<TrainerUser> GetTrainerUser()
+        {
+            return _repositry.GetTrainerUser();
+        }
+
         public bool Update(Trainer trainer)
         {
             int result;

@@ -100,12 +100,12 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("TRAINERID", trainer.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CERTIFICATE", trainer.Certificate, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LOCATION", trainer.Location, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CV", trainer.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("STATUS", trainer.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("USER_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CAT_ID", trainer.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("T_CERTIFICATE", trainer.Certificate, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("T_LOCATION", trainer.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("T_CV", trainer.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("T_STATUS", trainer.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("T_USER_ID", trainer.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("T_CAT_ID", trainer.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATETRAINER", p, commandType: CommandType.StoredProcedure);
@@ -116,6 +116,18 @@ namespace ETreeks.INFRA.Repository
         public int Create(Trainer t)
         {
             throw new NotImplementedException();
+        }
+        public List<TrainerUser> GetTrainerUser()
+        {
+            IEnumerable<TrainerUser> result = _dbContext.Connection.Query<TrainerUser>("TRAINER_PACKAGE.GETAllTrainerUser", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+        public trainerEmail getTrainerEmailbyId(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("TRAINERID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<trainerEmail> result = _dbContext.Connection.Query<trainerEmail>("TRAINER_PACKAGE.GETTRAINERLoginBYID", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
         }
     }
 }

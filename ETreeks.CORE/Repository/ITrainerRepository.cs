@@ -8,5 +8,7 @@ namespace ETreeks.CORE.Repository
     public interface ITrainerRepository
     {
         public List<KeyValuePair<string, int>> CreateTrainer(TrainerLogin trainerlogin);
+        List<TrainerUser> GetTrainerUser();
+         trainerEmail getTrainerEmailbyId(int id);
     }
 }
