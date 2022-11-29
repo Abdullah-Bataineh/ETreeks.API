@@ -53,6 +53,22 @@ namespace ETreeks.API.Controllers
             return item;
 
         }
+        [Route("UploadCV")]
+        [HttpPost]
+        public Trainer UploadCV()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine(@"C:\ETreeks\src\assets\cv", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            Trainer item2 = new Trainer();
+            item2.Cv = fileName;
+            return item2;
+
+        }
 
         [Route("Search/{c_name}")]
         [HttpGet]

@@ -15,7 +15,7 @@ namespace ETreeks.CORE.Data
         public decimal Verify_Code { get; set; }
         public decimal? Role_Id { get; set; }
         public decimal? User_Id { get; set; }
-
+          
        public virtual Role Role { get; set; }
         public virtual User User { get; set; }
     }
