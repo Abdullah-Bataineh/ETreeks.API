@@ -19,8 +19,8 @@ namespace ETreeks.API.Controllers
             var fullPath = Path.Combine(@"C:\ETreeks\src\assets\images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                file.CopyTo(stream);
-            }
+                file.CopyTo(stream); 
+            } 
             Category item = new Category();
             item.IMAGE = fileName;
             return item;
