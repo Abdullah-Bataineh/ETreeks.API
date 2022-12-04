@@ -84,10 +84,10 @@ namespace ETreeks.INFRA.Service
                 return false;
         }
 
-        public bool Verfiy(int code)
+        public bool Verfiy( int code, int id)
         {
             int result;
-            result = _verfiyRepository.Verfiy(code);
+            result = _verfiyRepository.Verfiy( code,id);
             if (result == 1)
                 return true;
             else

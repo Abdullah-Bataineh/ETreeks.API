@@ -6,6 +6,6 @@ namespace ETreeks.CORE.Service
 {
     public interface IVerfiyAccountService
     {
-        bool Verfiy(int code);
+        bool Verfiy(int code, int id);
     }
 }
