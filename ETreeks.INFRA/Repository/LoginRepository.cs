@@ -131,11 +131,11 @@ namespace ETreeks.INFRA.Repository
             return result;
         }
 
-        public int Verfiy(int code)
+        public int Verfiy(int code,int id)
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("L_ID", detalis_login.id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("L_ID", id, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("V_CODE", code, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("LOGIN_PACKAGE.CONFIRMVERIFYCODE", p, commandType: CommandType.StoredProcedure);

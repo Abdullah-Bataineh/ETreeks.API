@@ -15,10 +15,10 @@ namespace ETreeks.API.Controllers
         }
 
         [HttpPost]
-        [Route("VerfiyAccount/{code}")]
-        public bool VerfiyAccount(int code)
+        [Route("VerfiyAccount/{code}/{id}")]
+        public bool VerfiyAccount(int code,int id)
         {
-            return _verfiyAccountService.Verfiy(code);
+            return _verfiyAccountService.Verfiy(code,id);
         }
     }
 }
