@@ -7,6 +7,6 @@ namespace ETreeks.CORE.Repository
 {
     public interface IAvailableTimeRepository
     {
-        AvailableTime GetByTrainer(int trainerId);
+        List<AvailableTime> GetByTrainer(int trainerId);
     }
 }

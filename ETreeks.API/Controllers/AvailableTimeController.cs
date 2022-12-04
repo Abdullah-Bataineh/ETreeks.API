@@ -20,7 +20,7 @@ namespace ETreeks.API.Controllers
         
         [HttpGet]
         [Route("GetByTrainer/{id}")]
-        public AvailableTime GetCategoryByTrainer(int id)
+        public List<AvailableTime> GetCategoryByTrainer(int id)
         {
             return _trainerService.GetByTrainer(id);
         }

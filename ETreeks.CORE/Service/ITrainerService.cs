@@ -10,5 +10,6 @@ namespace ETreeks.CORE.Service
         public List<KeyValuePair<string, int>> CreateTrainer(TrainerLogin trainerlogin);
         public List<TrainerUser> GetTrainerUser();
         public trainerEmail getTrainerEmailbyId(int id);
+        public List<TrainerUser> searchTrainer(string name);
     }
 }
