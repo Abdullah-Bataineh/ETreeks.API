@@ -22,5 +22,11 @@ namespace ETreeks.API.Controllers
         {
             return _trainerService.GetTrainerCourseByUserId(id);
         }
+        [HttpGet]
+        [Route("GetTrainerByCourseId/{id}")]
+        public List<Trainer> GetTrainerByCourseId(int id)
+        {
+            return _trainerService.GetTrainerByCourseId(id);
+        }
     }
 }

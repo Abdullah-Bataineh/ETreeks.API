@@ -56,6 +56,13 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<Course> result = _dbContext.Connection.Query<Course>("TRAINERCOURSE_PACKAGE.GETALLTRAINERCOURSE",p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+        public List<Trainer> GetTrainerByCourseId(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Trainer> result = _dbContext.Connection.Query<Trainer>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public TrainerCourse GetById(int id)
         {
             var p = new DynamicParameters();
