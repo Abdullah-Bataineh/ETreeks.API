@@ -74,5 +74,11 @@ namespace ETreeks.API.Controllers
         {
             return _trainerService.searchTrainer(name);
         }
+        [Route("getTrainerUser/{id}")]
+        [HttpGet]
+        public List<TrainerUser> GetTrainerUserByUserId(int id)
+        {
+            return _trainerService.GetTrainerUserByUserId(id);
+        }
     }
 }
