@@ -141,5 +141,15 @@ namespace ETreeks.INFRA.Repository
             result1 = p1.Get<int>("res");
            
         }
+        public void ResendCode(int id)
+        {
+            Random VerfiyCode = new Random();
+            int _VerfiyCode = VerfiyCode.Next(1000, 9999);
+            var p = new DynamicParameters();
+            p.Add("L_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("V_CODE", _VerfiyCode, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.RESENDVERIFY", p, commandType: CommandType.StoredProcedure);
+
+        }
     }
 }

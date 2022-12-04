@@ -73,6 +73,10 @@ namespace ETreeks.INFRA.Service
         {
              _userRepository.Updateuserlogin(userlogin);
         }
+        public void ResendCode(int id)
+        {
+            _userRepository.ResendCode(id);
+        }
 
     }
 }
