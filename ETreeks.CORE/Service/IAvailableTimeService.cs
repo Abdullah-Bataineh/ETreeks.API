@@ -7,6 +7,6 @@ namespace ETreeks.CORE.Service
 {
     public interface IAvailableTimeService
     {
-        AvailableTime GetByTrainer(int trainerId);
+        List<AvailableTime> GetByTrainer(int trainerId);
     }
 }

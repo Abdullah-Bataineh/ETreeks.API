@@ -66,7 +66,13 @@ namespace ETreeks.API.Controllers
             smtpClient.Send(mail);
             smtpClient.Disconnect(true);
             smtpClient.Dispose();
-            //saadeh
+            
+        }
+        [Route("searchTrainer/{name}")]
+        [HttpGet]
+        public List<TrainerUser> searchTrainer(string name)
+        {
+            return _trainerService.searchTrainer(name);
         }
     }
 }

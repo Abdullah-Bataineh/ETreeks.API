@@ -129,5 +129,12 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<trainerEmail> result = _dbContext.Connection.Query<trainerEmail>("TRAINER_PACKAGE.GETTRAINERLoginBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
+        public List<TrainerUser> searchTrainer(string name)
+        {
+            var p= new DynamicParameters();
+            p.Add("c_name", name, dbType: DbType.String, direction: ParameterDirection.Input);
+               IEnumerable<TrainerUser> result = _dbContext.Connection.Query<TrainerUser>("TRAINER_PACKAGE.SEARCHTRAINER", p,commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

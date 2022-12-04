@@ -64,6 +64,11 @@ namespace ETreeks.INFRA.Service
             return _repositry.GetTrainerUser();
         }
 
+        public List<TrainerUser> searchTrainer(string name)
+        {
+            return _repositry.searchTrainer(name);
+        }
+
         public bool Update(Trainer trainer)
         {
             int result;
