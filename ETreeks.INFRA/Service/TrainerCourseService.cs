@@ -8,12 +8,14 @@ using System.Text;
 
 namespace ETreeks.INFRA.Service
 {
-    public class TrainerCourseService : IService<TrainerCourse>
+    public class TrainerCourseService : IService<TrainerCourse>,ITrainerCourseService
     {
         private readonly IRepository<TrainerCourse> _trainerCourseRepository;
-        public TrainerCourseService(IRepository<TrainerCourse> trainerCourseRepository)
+        private readonly ITrainerCourseRepository _courseRepository;
+        public TrainerCourseService(IRepository<TrainerCourse> trainerCourseRepository, ITrainerCourseRepository courseRepository)
         {
             _trainerCourseRepository = trainerCourseRepository;
+            _courseRepository = courseRepository;
         }
         public bool Create(TrainerCourse trainerCourse)
         {
@@ -43,6 +45,11 @@ namespace ETreeks.INFRA.Service
         public TrainerCourse GetById(int id)
         {
             return _trainerCourseRepository.GetById(id);
+        }
+
+        public List<Course> GetTrainerCourseByUserId(int id)
+        {
+           return _courseRepository.GetTrainerCourseByUserId(id);
         }
 
         public bool Update(TrainerCourse trainerCourse)
