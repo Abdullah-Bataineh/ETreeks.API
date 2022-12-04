@@ -8,6 +8,6 @@ namespace ETreeks.CORE.Service
     public interface ITrainerCourseService
     {
         public List<Course> GetTrainerCourseByUserId(int id);
-        public List<Trainer> GetTrainerByCourseId(int id)
+        public List<Trainer> GetTrainerByCourseId(int id);
     }
 }
