@@ -77,7 +77,7 @@ namespace ETreeks.INFRA.Repository
         public AvailableTime GetByTrainer(int trainerId)
         {
             var p = new DynamicParameters();
-            p.Add("TR_ID", trainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("U_ID", trainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<AvailableTime> result = _dbContext.Connection.Query<AvailableTime>("AVAILABLETIME_PACKAGE.GETALLTIMESBYTRAINER", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
