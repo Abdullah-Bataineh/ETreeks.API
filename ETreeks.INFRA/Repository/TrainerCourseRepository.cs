@@ -11,7 +11,8 @@ using System.Text;
 
 namespace ETreeks.INFRA.Repository
 {
-    public class TrainerCourseRepository : IRepository<TrainerCourse>
+    public class TrainerCourseRepository : IRepository<TrainerCourse>,ITrainerCourseRepository
+
     {
         private readonly IDbContext _dbContext;
 
@@ -48,7 +49,13 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<TrainerCourse> result = _dbContext.Connection.Query<TrainerCourse>("TRAINERCOURSE_PACKAGE.GETALLTRAINERCOURSE", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
-
+      public   List<Course> GetTrainerCourseByUserId(int id)
+        {
+            var p=new DynamicParameters();
+            p.Add("U_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Course> result = _dbContext.Connection.Query<Course>("TRAINERCOURSE_PACKAGE.GETALLTRAINERCOURSE",p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public TrainerCourse GetById(int id)
         {
             var p = new DynamicParameters();

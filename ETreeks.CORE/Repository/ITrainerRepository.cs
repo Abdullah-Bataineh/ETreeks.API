@@ -1,4 +1,5 @@
-﻿using ETreeks.CORE.DTO;
+﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,6 @@ namespace ETreeks.CORE.Repository
          trainerEmail getTrainerEmailbyId(int id);
 
         public List<TrainerUser> searchTrainer(string name);
+        
     }
 }
