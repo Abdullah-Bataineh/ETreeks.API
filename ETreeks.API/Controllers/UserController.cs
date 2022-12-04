@@ -92,5 +92,12 @@ namespace ETreeks.API.Controllers
 
              _userService.Updateuserlogin(userlogin);
         }
+        [Route("resend/{id}")]
+        [HttpPut]
+        public void ResendCode(int id)
+        {
+
+            _userService.ResendCode(id);
+        }
     }
 }

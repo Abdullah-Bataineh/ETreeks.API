@@ -12,6 +12,7 @@ namespace ETreeks.CORE.Repository
         public List<KeyValuePair<string, int>> CreateUser(UserLogin userlogin);
 
         public void Updateuserlogin(UserLogin userlogin);
+        public void ResendCode(int id);
     }
         
 }
