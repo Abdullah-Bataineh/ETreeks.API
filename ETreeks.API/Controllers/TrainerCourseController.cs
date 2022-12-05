@@ -1,4 +1,5 @@
 ﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace ETreeks.API.Controllers
         }
         [HttpGet]
         [Route("GetTrainerByCourseId/{id}")]
-        public List<Trainer> GetTrainerByCourseId(int id)
+        public List<TrainerUser> GetTrainerByCourseId(int id)
         {
             return _trainerService.GetTrainerByCourseId(id);
         }

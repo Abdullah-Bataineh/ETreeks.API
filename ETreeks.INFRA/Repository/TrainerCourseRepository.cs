@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using ETreeks.CORE.Common;
 using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Repository;
 using ETreeks.INFRA.Common;
 using System;
@@ -56,11 +57,11 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<Course> result = _dbContext.Connection.Query<Course>("TRAINERCOURSE_PACKAGE.GETALLTRAINERCOURSE",p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
-        public List<Trainer> GetTrainerByCourseId(int id)
+        public List<TrainerUser> GetTrainerByCourseId(int id)
         {
             var p = new DynamicParameters();
             p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<Trainer> result = _dbContext.Connection.Query<Trainer>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEID", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<TrainerUser> result = _dbContext.Connection.Query<TrainerUser>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEID", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
         public TrainerCourse GetById(int id)
