@@ -16,6 +16,7 @@ namespace ETreeks.CORE.DTO
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string CATEGORY_NAME { get; set; }
+        public string Image { get; set; }
 
     }
 }
