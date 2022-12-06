@@ -11,7 +11,7 @@ namespace ETreeks.CORE.Data
         public DateTime? Start_Date { get; set; }
         public DateTime? End_Date { get; set; }
         public decimal? Trainer_Id { get; set; }
-
+        public decimal? STATUS { get; set; }
         public virtual Trainer Trainer { get; set; }
     }
 }

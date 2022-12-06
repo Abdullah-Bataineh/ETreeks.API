@@ -23,6 +23,7 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("START_D", availableTime.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("STATUS_A", availableTime.STATUS, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("END_D", availableTime.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("TR_ID", availableTime.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -57,6 +58,7 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("TIMEID", availableTime.Id, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("STATUS_A", availableTime.STATUS, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("START_D", availableTime.Start_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("END_D", availableTime.End_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("TR_ID", availableTime.Trainer_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);

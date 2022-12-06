@@ -24,11 +24,10 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("STARTDATE", reservation.Start_Date, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ENDDATE", reservation.End_Date, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("RES_STATUS", reservation.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("USERID", reservation.User_Id, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("avaliable_time_id", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("RESERVATION_PACKAGE.CREATERESERVATION", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -65,8 +64,7 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("RESERVATIONID", reservation.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("STARTDATE", reservation.Start_Date, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ENDDATE", reservation.End_Date, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("avaliable_time_id", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("RES_STATUS", reservation.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("USERID", reservation.User_Id, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.String, direction: ParameterDirection.Input);

@@ -93,6 +93,10 @@ namespace ETreeks.CORE.Data
                     .HasColumnType("NUMBER")
                     .HasColumnName("TRAINER_ID");
 
+                entity.Property(e => e.STATUS)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("STATUS");
+
                 entity.HasOne(d => d.Trainer)
                     .WithMany(p => p.AvailableTimes)
                     .HasForeignKey(d => d.Trainer_Id)
@@ -279,13 +283,7 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.End_Date)
-                    .HasColumnType("DATE")
-                    .HasColumnName("END_DATE");
-
-                entity.Property(e => e.Start_Date)
-                    .HasColumnType("DATE")
-                    .HasColumnName("START_DATE");
+               
 
                 entity.Property(e => e.Status)
                     .HasColumnType("NUMBER")
@@ -294,6 +292,9 @@ namespace ETreeks.CORE.Data
                 entity.Property(e => e.Trainer_Course_Id)
                     .HasColumnType("NUMBER")
                     .HasColumnName("TRAINER_COURSE_ID");
+                entity.Property(e => e.avaliable_time_id)
+                   .HasColumnType("NUMBER")
+                   .HasColumnName("AVALIABLE_TIME_ID");
 
                 entity.Property(e => e.User_Id)
                     .HasColumnType("NUMBER")
