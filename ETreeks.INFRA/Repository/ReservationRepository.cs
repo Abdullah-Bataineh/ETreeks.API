@@ -85,5 +85,12 @@ namespace ETreeks.INFRA.Repository
             return result.ToList();
 
         }
+        public List<ReservationAccept> GetReservation(int t_id)
+        {
+            var p = new DynamicParameters();
+            p.Add("t_id", t_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<ReservationAccept> result = _dbContext.Connection.Query<ReservationAccept>("RESERVATION_PACKAGE.GETRESERVATION", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }
