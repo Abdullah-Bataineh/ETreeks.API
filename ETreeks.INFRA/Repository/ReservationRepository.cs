@@ -65,10 +65,10 @@ namespace ETreeks.INFRA.Repository
             int result;
             var p = new DynamicParameters();
             p.Add("RESERVATIONID", reservation.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("avaliable_time_id", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("RES_STATUS", reservation.Status, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("USERID", reservation.User_Id, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("AVAILABLE_ID", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RES_STATUS", reservation.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", reservation.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("RESERVATION_PACKAGE.UPDATERESERVATION", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
@@ -90,6 +90,14 @@ namespace ETreeks.INFRA.Repository
             var p = new DynamicParameters();
             p.Add("t_id", t_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<ReservationAccept> result = _dbContext.Connection.Query<ReservationAccept>("RESERVATION_PACKAGE.GETRESERVATION", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<ReservationAccept> GetReservationByUser(int u_id)
+        {
+            var p = new DynamicParameters();
+            p.Add("u_id", u_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<ReservationAccept> result = _dbContext.Connection.Query<ReservationAccept>("RESERVATION_PACKAGE.GETRESERVATIONBYUSER", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
     }
