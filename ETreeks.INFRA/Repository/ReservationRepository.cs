@@ -24,15 +24,16 @@ namespace ETreeks.INFRA.Repository
         {
             int result;
             var p = new DynamicParameters();
-            p.Add("RES_STATUS", reservation.Status, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("USERID", reservation.User_Id, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("avaliable_time_id", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RES_STATUS", reservation.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("USERID", reservation.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TR_CO_ID", reservation.Trainer_Course_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("AVAILABLE_ID", reservation.avaliable_time_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("RESERVATION_PACKAGE.CREATERESERVATION", p, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("res");
             return result;
         }
+        //moh
 
         public int Delete(int id)
         {
