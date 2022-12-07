@@ -33,6 +33,7 @@ namespace ETreeks.INFRA.Repository
             result = p.Get<int>("res");
             return result;
         }
+        //moh
 
         public int Delete(int id)
         {
