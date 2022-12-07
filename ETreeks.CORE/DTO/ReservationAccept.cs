@@ -14,7 +14,9 @@ namespace ETreeks.CORE.DTO
         public string COURSE_NAME { get; set; }
         public decimal Id { get; set; }
         public decimal? avaliable_time_id { get; set; }
-        
+
+        public string Location { get; set; }
+
         public decimal? User_Id { get; set; }
         public decimal? Trainer_Course_Id { get; set; }
         public decimal LOGINID { get; set; }

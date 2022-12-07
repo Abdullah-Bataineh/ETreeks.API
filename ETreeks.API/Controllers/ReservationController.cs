@@ -35,6 +35,13 @@ namespace ETreeks.API.Controllers
         {
            return _reservationService.GetReservation(t_id);
         }
+        [HttpGet]
+        [Route("getreservationbyuser/{u_id}")]
+        public List<ReservationAccept> GetReservationByUser(int u_id)
+        {
+            return _reservationService.GetReservationByUser(u_id);
+        }
+
         [HttpPost]
         [Route("SendEmail/{login_id}/{status}")]
         public void SendEmail(int login_id,int status)
