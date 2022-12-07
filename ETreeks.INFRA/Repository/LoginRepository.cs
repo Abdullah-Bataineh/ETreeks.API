@@ -164,5 +164,16 @@ namespace ETreeks.INFRA.Repository
         {
             throw new NotImplementedException();
         }
+
+        public int GetIdByEmail(string email)
+        {
+            int result;
+            var p = new DynamicParameters();
+            p.Add("L_Email", email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("L_ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("LOGIN_PACKAGE.GETIDBYEMAIL", p, commandType: CommandType.StoredProcedure);
+            result = p.Get<int>("L_ID");
+            return result;
+        }
     }
 }
