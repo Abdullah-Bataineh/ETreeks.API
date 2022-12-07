@@ -8,6 +8,8 @@ namespace ETreeks.CORE.Service
     public interface IReservationService
     {
         public List<search> Search(search search);
-        
+        public List<ReservationAccept> GetReservation(int t_id);
+
+
     }
 }

@@ -64,5 +64,10 @@ namespace ETreeks.INFRA.Service
         {
             return _reservationRepository1.Search(search);
         }
+
+        public List<ReservationAccept> GetReservation(int t_id)
+        {
+            return _reservationRepository1.GetReservation(t_id);
+        }
     }
 }
