@@ -83,5 +83,16 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<AvailableTime> result = _dbContext.Connection.Query<AvailableTime>("AVAILABLETIME_PACKAGE.GETALLTIMESBYTRAINER", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+        public void updateStatusbyID(int id,int st)
+        {
+            
+            var p = new DynamicParameters();
+            p.Add("TIMEID",id, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("st", st, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            
+            _dbContext.Connection.Execute("AVAILABLETIME_PACKAGE.updateTIMEBYID", p, commandType: CommandType.StoredProcedure);
+            
+            
+        }
     }
 }

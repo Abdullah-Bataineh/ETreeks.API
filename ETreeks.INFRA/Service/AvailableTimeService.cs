@@ -61,5 +61,10 @@ namespace ETreeks.INFRA.Service
             else
                 return false;
         }
+
+        public void updateStatusbyID(int id, int st)
+        {
+            _availableTimeRepository2.updateStatusbyID(id,st);
+        }
     }
 }
