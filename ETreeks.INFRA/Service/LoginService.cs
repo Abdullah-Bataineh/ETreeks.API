@@ -103,5 +103,9 @@ namespace ETreeks.INFRA.Service
             return _loginRepository1.GetByUserId(userid);
 
         }
+        public int GetIdByEmail(string email)
+        {
+            return _loginRepository1.GetIdByEmail(email);
+        }
     }
 }

@@ -112,5 +112,11 @@ namespace ETreeks.API.Controllers
             return _loginService.GetByUserId(userid);
 
         }
+        [HttpGet]
+        [Route("GetIdByEmail/{email}")]
+        public int GetIdByEmail(string email)
+        {
+            return _loginService.GetIdByEmail(email);
+        }
     }
 }

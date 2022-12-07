@@ -15,5 +15,7 @@ namespace ETreeks.CORE.Service
 
         public Login GetByUserId(int userid);
 
+        public int GetIdByEmail(string email);
+
     }
 }

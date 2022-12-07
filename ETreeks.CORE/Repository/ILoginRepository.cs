@@ -16,5 +16,8 @@ namespace ETreeks.CORE.Repository
         public int CreateLogIn(Login login);
 
         public Login GetByUserId(int userid);
+
+        public int GetIdByEmail(string email);
+
     }
 }
