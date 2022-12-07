@@ -84,5 +84,13 @@ namespace ETreeks.INFRA.Repository
             result = p.Get<int>("RES");
             return result;
         }
+        public TrainerCourse GetIdTrainerCourse(int c_id,int t_id)
+        {
+            var p = new DynamicParameters();
+            p.Add("C_ID", c_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("T_ID", t_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<TrainerCourse> result = _dbContext.Connection.Query<TrainerCourse>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEIDANDTRAINERID", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
     }
 }
