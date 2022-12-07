@@ -10,5 +10,6 @@ namespace ETreeks.CORE.Repository
     {
         public List<Course> GetTrainerCourseByUserId(int id);
         public List<TrainerUser> GetTrainerByCourseId(int id);
+        public TrainerCourse GetIdTrainerCourse(int c_id, int t_id);
     }
 }
