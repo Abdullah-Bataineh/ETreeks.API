@@ -11,5 +11,8 @@ namespace ETreeks.CORE.Data
         public string Phone_Number { get; set; }
         public string Website_Name { get; set; }
         public string Location { get; set; }
+        public string Email { get; set; }
+
+        
     }
 }

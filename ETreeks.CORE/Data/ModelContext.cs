@@ -141,7 +141,11 @@ namespace ETreeks.CORE.Data
                 entity.Property(e => e.Website_Name)
                     .HasMaxLength(200)
                     .IsUnicode(false)
-                    .HasColumnName("WEBSITE_NAME");
+                    .HasColumnName("EMAIL");
+                entity.Property(e => e.Email)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("EMAIL");
             });
 
             modelBuilder.Entity<ContactU>(entity =>
