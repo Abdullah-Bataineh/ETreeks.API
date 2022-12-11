@@ -94,5 +94,12 @@ namespace ETreeks.INFRA.Repository
             
             
         }
+        public List<AvailableTime> GetByTrainerid(int trainerId)
+        {
+            var p = new DynamicParameters();
+            p.Add("T_ID", trainerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<AvailableTime> result = _dbContext.Connection.Query<AvailableTime>("AVAILABLETIME_PACKAGE.GETTIMEBYTRAINERID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }
