@@ -64,6 +64,14 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<TrainerUser> result = _dbContext.Connection.Query<TrainerUser>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEID", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+        public List<TrainerUser> SearchTrainerByCourseId(int id,string c_name)
+        {
+            var p = new DynamicParameters();
+            p.Add("C_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("C_NAME", id, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<TrainerUser> result = _dbContext.Connection.Query<TrainerUser>("TRAINERCOURSE_PACKAGE.SEARCHTRAINERBYCOURSEID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public TrainerCourse GetById(int id)
         {
             var p = new DynamicParameters();
@@ -92,5 +100,6 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<TrainerCourse> result = _dbContext.Connection.Query<TrainerCourse>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEIDANDTRAINERID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
+
     }
 }
