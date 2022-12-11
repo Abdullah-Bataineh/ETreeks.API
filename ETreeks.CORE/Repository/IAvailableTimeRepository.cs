@@ -9,5 +9,6 @@ namespace ETreeks.CORE.Repository
     {
         List<AvailableTime> GetByTrainer(int trainerId);
         public void updateStatusbyID(int id, int st);
+        public List<AvailableTime> GetByTrainerid(int trainerId);
     }
 }

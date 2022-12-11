@@ -51,6 +51,11 @@ namespace ETreeks.INFRA.Service
             return _availableTimeRepository2.GetByTrainer(id);
         }
 
+        public List<AvailableTime> GetByTrainerid(int trainerId)
+        {
+            return _availableTimeRepository2.GetByTrainerid(trainerId);
+        }
+
         public bool Update(AvailableTime availableTime)
         {
 

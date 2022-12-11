@@ -20,7 +20,7 @@ namespace ETreeks.API.Controllers
         
         [HttpGet]
         [Route("GetByTrainer/{id}")]
-        public List<AvailableTime> GetCategoryByTrainer(int id)
+        public List<AvailableTime> GetByTrainer(int id)
         {
             return _availableService.GetByTrainer(id);
         }
@@ -29,6 +29,12 @@ namespace ETreeks.API.Controllers
         public void updateStatusbyID(int id, int st)
         {
             _availableService.updateStatusbyID(id, st);
+        }
+        [HttpGet]
+        [Route("GetByTrainerid/{t_id}")]
+        public List<AvailableTime> GetByTrainerid(int t_id)
+        {
+            return _availableService.GetByTrainerid(t_id);
         }
     }
 }
