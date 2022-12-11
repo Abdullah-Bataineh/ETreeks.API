@@ -63,6 +63,11 @@ namespace ETreeks.INFRA.Service
            return _courseRepository.GetTrainerCourseByUserId(id);
         }
 
+        public List<TrainerUser> SearchTrainerByCourseId(int id, string c_name)
+        {
+            return _courseRepository.SearchTrainerByCourseId(id, c_name);
+        }
+
         public bool Update(TrainerCourse trainerCourse)
         {
 

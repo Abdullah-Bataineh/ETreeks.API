@@ -30,6 +30,12 @@ namespace ETreeks.API.Controllers
             return _trainerService.GetTrainerByCourseId(id);
         }
         [HttpGet]
+        [Route("SearchTrainerByCourseId/{id}/{c_name}")]
+        public List<TrainerUser> SearchTrainerByCourseId(int id,string c_name)
+        {
+            return _trainerService.SearchTrainerByCourseId(id,c_name);
+        }
+        [HttpGet]
         [Route("GetIdTrainerCourse/{c_id}/{t_id}")]
         public TrainerCourse GetIdTrainerCourse(int c_id, int t_id)
         {
