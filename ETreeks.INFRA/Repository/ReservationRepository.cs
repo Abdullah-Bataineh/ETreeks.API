@@ -100,5 +100,13 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<ReservationAccept> result = _dbContext.Connection.Query<ReservationAccept>("RESERVATION_PACKAGE.GETRESERVATIONBYUSER", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+        public List<UserByCourse> GetUserOfEachCourse(int t_id)
+        {
+            var p = new DynamicParameters();
+
+            p.Add("t_id", t_id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<UserByCourse> result = _dbContext.Connection.Query<UserByCourse>("RESERVATION_PACKAGE.GETUSERFOREACHCOURSE", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

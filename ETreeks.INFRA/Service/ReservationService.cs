@@ -74,5 +74,9 @@ namespace ETreeks.INFRA.Service
         {
             return _reservationRepository1.GetReservationByUser(u_id);
         }
+        public List<UserByCourse> GetUserOfEachCourse(int t_id)
+        {
+            return _reservationRepository1.GetUserOfEachCourse(t_id);
+        }
     }
 }
