@@ -144,7 +144,7 @@ namespace ETreeks.INFRA.Repository
             p2.Add("T_LOCATION", trainerLogin.Location, dbType: DbType.String, direction: ParameterDirection.Input);
           
 
-            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p2.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATELOCATION", p2, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
         }
