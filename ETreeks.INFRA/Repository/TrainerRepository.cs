@@ -141,15 +141,11 @@ namespace ETreeks.INFRA.Repository
 
             var p2 = new DynamicParameters();
             p2.Add("TRAINERID", trainerLogin.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p2.Add("T_CERTIFICATE", trainerLogin.Certificate, dbType: DbType.String, direction: ParameterDirection.Input);
             p2.Add("T_LOCATION", trainerLogin.Location, dbType: DbType.String, direction: ParameterDirection.Input);
-            p2.Add("T_CV", trainerLogin.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
-            p2.Add("T_STATUS", trainerLogin.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p2.Add("T_USER_ID", trainerLogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p2.Add("T_CAT_ID", trainerLogin.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+          
 
             p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATETRAINER", p2, commandType: CommandType.StoredProcedure);
+            _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATELOCATION", p2, commandType: CommandType.StoredProcedure);
             result = p.Get<int>("RES");
         }
 
