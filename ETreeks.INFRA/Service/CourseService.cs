@@ -72,5 +72,10 @@ namespace ETreeks.INFRA.Service
         {
             return _course.Search(c_name);
         }
+
+        public List<COURSEINCATEGORY> GetCourseinCategory()
+        {
+            return _course.GetCourseinCategory();
+        }
     }
 }
