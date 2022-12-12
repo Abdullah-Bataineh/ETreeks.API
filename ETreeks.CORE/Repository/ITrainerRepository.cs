@@ -16,5 +16,6 @@ namespace ETreeks.CORE.Repository
 
         public List<TrainerUser> searchTrainer(string name);
         public List<TrainerUser> GetTrainerUserByUserId(int id);
+        public void UpdateTrainer(TrainerLogin trainerLogin);
     }
 }

@@ -112,6 +112,46 @@ namespace ETreeks.INFRA.Repository
             result = p.Get<int>("RES");
             return result;
         }
+        public void UpdateTrainer(TrainerLogin trainerLogin)
+        {
+           
+                int result;
+                var p = new DynamicParameters();
+                p.Add("USERID", trainerLogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("FIRSTNAME", trainerLogin.First_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("LASTNAME", trainerLogin.Last_Name, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("BIRTHDATE", trainerLogin.Birth_Date, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+                p.Add("PHONENUMBER", trainerLogin.Phone_Number, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("IMAGEUSER", trainerLogin.Image, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                _dbContext.Connection.Execute("USERS_PACKAGE.UPDATEUSERS", p, commandType: CommandType.StoredProcedure);
+                result = p.Get<int>("RES");
+
+                int result1;
+                var p1 = new DynamicParameters();
+                p1.Add("LOGINID", result, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p1.Add("EMAILLOGIN", trainerLogin.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+                p1.Add("PASSWORDLOGIN", trainerLogin.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+                p1.Add("CODE", trainerLogin.Verify_Code, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p1.Add("ROLEID", trainerLogin.Role_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p1.Add("USERID", trainerLogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p1.Add("res", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                _dbContext.Connection.Execute("LOGIN_PACKAGE.UPDATELOGIN", p1, commandType: CommandType.StoredProcedure);
+                result1 = p1.Get<int>("res");
+
+            var p2 = new DynamicParameters();
+            p2.Add("TRAINERID", trainerLogin.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p2.Add("T_CERTIFICATE", trainerLogin.Certificate, dbType: DbType.String, direction: ParameterDirection.Input);
+            p2.Add("T_LOCATION", trainerLogin.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+            p2.Add("T_CV", trainerLogin.Cv, dbType: DbType.String, direction: ParameterDirection.Input);
+            p2.Add("T_STATUS", trainerLogin.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p2.Add("T_USER_ID", trainerLogin.User_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p2.Add("T_CAT_ID", trainerLogin.Cat_Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            p.Add("RES", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbContext.Connection.Execute("TRAINER_PACKAGE.UPDATETRAINER", p2, commandType: CommandType.StoredProcedure);
+            result = p.Get<int>("RES");
+        }
 
         public int Create(Trainer t)
         {
