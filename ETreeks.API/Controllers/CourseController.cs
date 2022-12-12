@@ -54,5 +54,11 @@ namespace ETreeks.API.Controllers
         {
             return _courseService.Search(c_name);
         }
+        [Route("courseincategory")]
+        [HttpGet]
+        public List<COURSEINCATEGORY> GetCourseinCategory()
+        {
+            return _courseService.GetCourseinCategory();
+        }
     }
 }

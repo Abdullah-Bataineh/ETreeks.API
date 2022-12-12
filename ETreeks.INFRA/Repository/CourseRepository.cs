@@ -94,5 +94,10 @@ namespace ETreeks.INFRA.Repository
             return result.ToList();
 
         }
+        public List<COURSEINCATEGORY> GetCourseinCategory()
+        {
+            IEnumerable<COURSEINCATEGORY> result = _dbContext.Connection.Query<COURSEINCATEGORY>("COURSE_PACKAGE.NUMBERCOURSESINCATEGORY", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }
