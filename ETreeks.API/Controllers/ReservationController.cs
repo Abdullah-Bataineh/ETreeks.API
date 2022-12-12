@@ -41,6 +41,12 @@ namespace ETreeks.API.Controllers
         {
             return _reservationService.GetReservationByUser(u_id);
         }
+        [HttpGet]
+        [Route("getuserforeachcourse/{t_id}")]
+        public List<UserByCourse> GetUserOfEachCourse(int t_id)
+        {
+            return _reservationService.GetUserOfEachCourse(t_id);   
+        }
 
         [HttpPost]
         [Route("SendEmail/{login_id}/{status}")]
