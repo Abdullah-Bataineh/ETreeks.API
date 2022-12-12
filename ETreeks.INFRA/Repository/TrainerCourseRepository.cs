@@ -100,6 +100,11 @@ namespace ETreeks.INFRA.Repository
             IEnumerable<TrainerCourse> result = _dbContext.Connection.Query<TrainerCourse>("TRAINERCOURSE_PACKAGE.GETTRAINERBYCOURSEIDANDTRAINERID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
+        public List<TrainerOfEachCourse> GetTrainerOfEachCourse()
+        {
+            IEnumerable<TrainerOfEachCourse> result = _dbContext.Connection.Query<TrainerOfEachCourse>("TRAINERCOURSE_PACKAGE.GETNUMBEROFTRAINEROFEACHCOURSE",  commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
 
     }
 }
