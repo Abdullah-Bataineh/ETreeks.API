@@ -41,5 +41,11 @@ namespace ETreeks.API.Controllers
         {
             return _trainerService.GetIdTrainerCourse(c_id, t_id);  
         }
+        [HttpGet]
+        [Route("getNumberoftrainerbycourse")]
+        public List<TrainerOfEachCourse> GetTrainerOfEachCourse()
+        {
+            return _trainerService.GetTrainerOfEachCourse();
+        }
     }
 }
