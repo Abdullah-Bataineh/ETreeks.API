@@ -83,5 +83,10 @@ namespace ETreeks.INFRA.Service
             else
                 return false;
         }
+
+        public void UpdateTrainer(TrainerLogin trainerLogin)
+        {
+             _repositry.UpdateTrainer(trainerLogin);
+        }
     }
 }

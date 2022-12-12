@@ -80,5 +80,11 @@ namespace ETreeks.API.Controllers
         {
             return _trainerService.GetTrainerUserByUserId(id);
         }
+        [Route("UpdateTrainer")]
+        [HttpPut]
+        public void UpdateTrainer(TrainerLogin trainerLogin)
+        {
+            _trainerService.UpdateTrainer(trainerLogin);
+        }
     }
 }
