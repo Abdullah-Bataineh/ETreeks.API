@@ -1,4 +1,5 @@
-﻿using ETreeks.CORE.DTO;
+﻿using ETreeks.CORE.Data;
+using ETreeks.CORE.DTO;
 using ETreeks.CORE.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,17 @@ namespace ETreeks.API.Controllers
         {
             return _testimonialService.GetAllTistimonialWithUserName();
         }
-
+        [HttpGet]
+        [Route("GetAllTistimonialguest")]
+        public List<TestimonialGuest> GetTestimonialGuests()
+        {
+            return _testimonialService.GetTestimonialGuests();
+        }
+        [HttpPost]
+        [Route("createTistimonialguest")]
+        public void CreateTestimonialguest(TestimonialGuest testimonial)
+        {
+            _testimonialService.CreateTestimonialguest(testimonial);
+        }
     }
 }
