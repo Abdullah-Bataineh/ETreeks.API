@@ -326,14 +326,14 @@ namespace ETreeks.CORE.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.Review1)
+                entity.Property(e => e.review)
                     .HasColumnType("FLOAT")
                     .HasColumnName("REVIEW");
+                entity.Property(e => e.RESERVATION_ID)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("RESERVATION_ID");
 
-                entity.Property(e => e.Text)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("TEXT");
+
             });
 
             modelBuilder.Entity<Role>(entity =>

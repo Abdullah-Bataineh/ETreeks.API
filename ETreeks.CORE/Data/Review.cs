@@ -8,7 +8,7 @@ namespace ETreeks.CORE.Data
     public partial class Review
     {
         public decimal Id { get; set; }
-        public decimal? Review1 { get; set; }
-        public string Text { get; set; }
+        public decimal? review { get; set; }
+        public decimal RESERVATION_ID { get; set; }
     }
 }
