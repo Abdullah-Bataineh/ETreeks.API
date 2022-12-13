@@ -37,8 +37,8 @@ namespace ETreeks.INFRA.Repository
             
             var p = new DynamicParameters();
             p.Add("TEST_TEXT", testimonial.Text, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("TEST_STATUS", testimonial.Status, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("G_NAME", testimonial.Name, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("TEST_STATUS", testimonial.Status, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("G_NAME", testimonial.Name, dbType: DbType.String, direction: ParameterDirection.Input);
             
             _dbContext.Connection.Execute("TESTIMONIAL_PACKAGE.CREATETESTIMONIALGUEST", p, commandType: CommandType.StoredProcedure);
            
