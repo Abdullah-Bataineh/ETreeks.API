@@ -15,6 +15,8 @@ namespace ETreeks.CORE.DTO
         public decimal Id { get; set; }
         public decimal? avaliable_time_id { get; set; }
 
+        public decimal? review { get; set; }
+
         public string Location { get; set; }
 
         public decimal? User_Id { get; set; }
