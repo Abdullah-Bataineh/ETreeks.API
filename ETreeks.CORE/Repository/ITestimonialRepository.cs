@@ -11,5 +11,6 @@ namespace ETreeks.CORE.Repository
         List<TistimonialWithUserName> GetAllTistimonialWithUserName();
         public List<TestimonialGuest> GetTestimonialGuests();
         public void CreateTestimonialguest(TestimonialGuest testimonial);
+        public void UpdateStatus(int id, int status);
     }
 }

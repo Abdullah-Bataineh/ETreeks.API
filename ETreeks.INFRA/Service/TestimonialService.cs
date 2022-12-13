@@ -73,5 +73,10 @@ namespace ETreeks.INFRA.Service
             else
                 return false;
         }
+
+        public void UpdateStatus(int id, int status)
+        {
+           _repository.UpdateStatus(id, status);
+        }
     }
 }
