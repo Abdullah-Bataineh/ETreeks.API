@@ -18,7 +18,7 @@ namespace ETreeks.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetREVIEWBYRESERVATION")]
+        [Route("GetREVIEWBYRESERVATION/{r_id}")]
         public Review GetReviewByReservation(int r_id)
         {
             return _Service.GetReviewByReservation(r_id);
