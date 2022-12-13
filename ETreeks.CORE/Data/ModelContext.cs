@@ -26,6 +26,7 @@ namespace ETreeks.CORE.Data
         public virtual DbSet<HomePage> HomePages { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<TestimonialGuest> TestimonialGuest { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Testimonial> Testimonials { get; set; }
@@ -70,6 +71,29 @@ namespace ETreeks.CORE.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("TITLE");
+            });
+            modelBuilder.Entity<TestimonialGuest>(entity =>
+            {
+                entity.ToTable("TESTIMONIAL_GUEST");
+
+                entity.Property(e => e.Id)
+                  .HasColumnType("NUMBER")
+                  .ValueGeneratedOnAdd()
+                  .HasColumnName("ID");
+
+                entity.Property(e => e.Status)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("STATUS");
+             
+                entity.Property(e => e.Name)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("NAME");
+
+                entity.Property(e => e.Text)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("TEXT");
             });
 
             modelBuilder.Entity<AvailableTime>(entity =>

@@ -29,6 +29,11 @@ namespace ETreeks.INFRA.Service
                 return false;
         }
 
+        public void CreateTestimonialguest(TestimonialGuest testimonial)
+        {
+           _repository.CreateTestimonialguest(testimonial);
+        }
+
         public bool Delete(int id)
         {
             int result;
@@ -52,6 +57,11 @@ namespace ETreeks.INFRA.Service
         public Testimonial GetById(int id)
         {
             return _testimonialrepository.GetById(id);
+        }
+
+        public List<TestimonialGuest> GetTestimonialGuests()
+        {
+            return _repository.GetTestimonialGuests();
         }
 
         public bool Update(Testimonial testimonial)
