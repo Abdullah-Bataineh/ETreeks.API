@@ -35,5 +35,11 @@ namespace ETreeks.API.Controllers
         {
             _testimonialService.CreateTestimonialguest(testimonial);
         }
+        [HttpPut]
+        [Route("updatestatus/{id}/{status}")]
+        public void UpdateStatus(int id, int status)
+        {
+            _testimonialService.UpdateStatus(id, status);
+        }
     }
 }
