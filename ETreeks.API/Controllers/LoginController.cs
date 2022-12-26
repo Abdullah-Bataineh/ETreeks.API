@@ -47,7 +47,7 @@ namespace ETreeks.API.Controllers
             using (var client = new HttpClient())
                 
 
-                using (var request = new HttpRequestMessage(HttpMethod.Post, $" https://api.ultramsg.com/instance26226/messages/chat?token={my_jsondata.token}&to={my_jsondata.to}&body={my_jsondata.body}"))
+                using (var request = new HttpRequestMessage(HttpMethod.Post, $" https://api.ultramsg.com/instance27408/messages/chat?token={my_jsondata.token}&to={my_jsondata.to}&body={my_jsondata.body}"))
             {
                 var json = JsonConvert.SerializeObject(my_jsondata);
                 using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
